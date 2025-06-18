@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ScrollToTop } from './utils/utils';
 import Dashboard from './pages/Dashboard';
+import AllUsers from './pages/User/AllUsers';
 
 const Login = lazy(() => import('./pages/Login'));
 
@@ -24,6 +25,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/users" element={<AllUsers />} />
         </Routes>
       </Suspense>
     </Router>

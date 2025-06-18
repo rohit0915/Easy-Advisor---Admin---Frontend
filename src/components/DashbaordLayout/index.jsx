@@ -27,7 +27,7 @@ import img1 from '../../assets/images/LoginLogo.png'
  * @param {Object} props - Component props
  * @param {React.ReactNode} props.children - Child components to render in the main content area
  */
-const DashbaordLayout = ({ children, title = "", titleAction = null }) => {
+const DashbaordLayout = ({ children, title = "", hedartitle="", titleAction = null }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -36,7 +36,7 @@ const DashbaordLayout = ({ children, title = "", titleAction = null }) => {
 
   const navItems = [
     { name: "Dashboard", icon: MdOutlineDashboard, path: "/dashboard" },
-    { name: "User", icon: LuUsersRound, path: "/dashboard/appointments/current-bookings" },
+    { name: "User", icon: LuUsersRound, path: "/users" },
     { name: "Adviser", icon: LiaChalkboardTeacherSolid, path: "/dashboard/users" },
     { name: "Appointment", icon: MdOutlineCalendarToday, path: "/dashboard/analytics" },
     { name: "Completed", icon: IoMdCheckmarkCircleOutline, path: "/dashboard/settings" },
@@ -69,7 +69,7 @@ const DashbaordLayout = ({ children, title = "", titleAction = null }) => {
       <aside
         id="mobile-sidebar"
         className={`fixed top-0 left-0 z-40 h-full w-[260px]  pt-[90px] transition-transform duration-300 ease-in-out
-        ${isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"} md:relative md:translate-x-0 md:w-[282px]`}
+        ${isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"} md:relative md:translate-x-0 md:w-[240px]`}
       >
         {/* Close button on mobile */}
         <div className="absolute top-4 right-4 md:hidden z-50">
@@ -89,20 +89,18 @@ const DashbaordLayout = ({ children, title = "", titleAction = null }) => {
                 >
                   <div
                     className={`w-[40px] h-[40px] rounded-full flex justify-center items-center transition-all duration-200 
-                    ${
-                      location.pathname === item.path
+                    ${location.pathname === item.path
                         ? "bg-[linear-gradient(90deg,_#C82D30_1.89%,_#362695_67.23%,_#B12F31_136.79%)] text-white"
                         : "text-[#6B7280] group-hover:bg-[linear-gradient(90deg,_#C82D30_1.89%,_#362695_67.23%,_#B12F31_136.79%)] group-hover:text-white"
-                    }`}
+                      }`}
                   >
                     <item.icon size={20} />
                   </div>
                   <span
-                    className={`font-urbanist font-[500] leading-[150%] ml-3 text-[16px] ${
-                      location.pathname === item.path
+                    className={`font-urbanist font-[500] leading-[150%] ml-3 text-[16px] ${location.pathname === item.path
                         ? "text-transparent bg-clip-text bg-[linear-gradient(90deg,_#C82D30_1.89%,_#362695_67.23%,_#B12F31_136.79%)]"
                         : "text-[#6B7280] group-hover:text-transparent bg-clip-text bg-[linear-gradient(90deg,_#C82D30_1.89%,_#362695_67.23%,_#B12F31_136.79%)]"
-                    }`}
+                      }`}
                   >
                     {item.name}
                   </span>
@@ -139,7 +137,7 @@ const DashbaordLayout = ({ children, title = "", titleAction = null }) => {
             <div className="text-white text-sm ml-6 hidden sm:flex items-center gap-1">
               <span>Home</span>
               <span>{'>'}</span>
-              <span>Dashboard</span>
+              <span>{hedartitle}</span>
             </div>
           </div>
           <div className="w-[48px] h-[48px] rounded-full">
@@ -148,14 +146,16 @@ const DashbaordLayout = ({ children, title = "", titleAction = null }) => {
         </header>
 
         {/* Main Content */}
-        <main className="pt-[90px] px-4 overflow-y-auto flex-1">
-          <div className="flex items-center gap-2 flex-wrap">
-            <h2 className="sm:text-[40px] text-2xl font-[600] text-charcoal font-rasa whitespace-nowrap">
-              {title}
-            </h2>
-            {titleAction}
+        <main className="pt-[90px] h-full  px-4 overflow-hidden flex-1">
+          <div className="h-full overflow-auto hidescroll">
+            <div className="flex items-center gap-2 flex-wrap">
+              <h2 className="font-urbanist text-[18px] font-[600] text-[#0A0E15] whitespace-nowrap">
+                {title}
+              </h2>
+              {titleAction}
+            </div>
+            {children}
           </div>
-          {children}
         </main>
       </div>
     </div>
