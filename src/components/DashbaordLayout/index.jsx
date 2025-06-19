@@ -15,6 +15,9 @@ import { BiMoneyWithdraw } from "react-icons/bi";
 import { MdNotificationsNone } from "react-icons/md";
 import { MdOutlineBuild } from "react-icons/md";
 import { MdOutlineAutoStories } from "react-icons/md";
+import { IoIosArrowDown } from "react-icons/io";
+import { FaHourglassHalf, } from "react-icons/fa";
+import { TbUserOff } from "react-icons/tb";
 
 import img1 from '../../assets/images/LoginLogo.png'
 
@@ -27,29 +30,107 @@ import img1 from '../../assets/images/LoginLogo.png'
  * @param {Object} props - Component props
  * @param {React.ReactNode} props.children - Child components to render in the main content area
  */
-const DashbaordLayout = ({ children, title = "", hedartitle="", titleAction = null }) => {
+const DashbaordLayout = ({ children, title = "", hedartitle = "", titleAction = null }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [openSubmenus, setOpenSubmenus] = useState({});
 
   const location = useLocation();
   const navigate = useNavigate();
 
   const navItems = [
-    { name: "Dashboard", icon: MdOutlineDashboard, path: "/dashboard" },
-    { name: "User", icon: LuUsersRound, path: "/users" },
-    { name: "Adviser", icon: LiaChalkboardTeacherSolid, path: "/dashboard/users" },
-    { name: "Appointment", icon: MdOutlineCalendarToday, path: "/dashboard/analytics" },
-    { name: "Completed", icon: IoMdCheckmarkCircleOutline, path: "/dashboard/settings" },
-    { name: "Earning", icon: RiMoneyRupeeCircleLine, path: "/dashboard/support" },
-    { name: "Blogs", icon: TiPen, path: "/logout" },
-    { name: "Category", icon: MdOutlineCategory, path: "/logout" },
-    { name: "Team Management", icon: BiSupport, path: "/logout" },
-    { name: "Banner Management", icon: PiImageSquareBold, path: "/logout" },
-    { name: "Withdrawal", icon: BiMoneyWithdraw, path: "/logout" },
-    { name: "Notifications", icon: MdNotificationsNone, path: "/logout" },
-    { name: "Support Management", icon: BiSupport, path: "/logout" },
-    { name: "General Setting", icon: MdOutlineBuild, path: "/logout" },
-    { name: "Page Management", icon: MdOutlineAutoStories, path: "/logout" },
+    {
+      name: "Dashboard",
+      icon: MdOutlineDashboard,
+      path: "/dashboard"
+    },
+    {
+      name: "User",
+      icon: LuUsersRound,
+      path: "/users"
+    },
+    {
+      name: "Adviser",
+      icon: LiaChalkboardTeacherSolid,
+      path: "/adviser",
+      children: [
+        {
+          name: "Adviser List",
+          icon: LiaChalkboardTeacherSolid,
+          path: "/adviser/list"
+        },
+        {
+          name: "Pending Request",
+          icon: FaHourglassHalf,
+          path: "/adviser/pending"
+        },
+        {
+          name: "Suspended",
+          icon: TbUserOff,
+          path: "/adviser/suspended"
+        },
+      ],
+    },
+    {
+      name: "Appointment",
+      icon: MdOutlineCalendarToday,
+      path: "/appointment"
+    },
+    {
+      name: "Completed",
+      icon: IoMdCheckmarkCircleOutline,
+      path: "/dashboard/settings"
+    },
+    {
+      name: "Earning",
+      icon: RiMoneyRupeeCircleLine,
+      path: "/dashboard/support"
+    },
+    {
+      name: "Blogs",
+      icon: TiPen,
+      path: "/logout"
+    },
+    {
+      name: "Category",
+      icon: MdOutlineCategory,
+      path: "/logout"
+    },
+    {
+      name: "Team Management",
+      icon: BiSupport,
+      path: "/logout"
+    },
+    {
+      name: "Banner Management",
+      icon: PiImageSquareBold,
+      path: "/logout"
+    },
+    {
+      name: "Withdrawal",
+      icon: BiMoneyWithdraw,
+      path: "/logout"
+    },
+    {
+      name: "Notifications",
+      icon: MdNotificationsNone,
+      path: "/logout"
+    },
+    {
+      name: "Support Management",
+      icon: BiSupport,
+      path: "/logout"
+    },
+    {
+      name: "General Setting",
+      icon: MdOutlineBuild,
+      path: "/logout"
+    },
+    {
+      name: "Page Management",
+      icon: MdOutlineAutoStories,
+      path: "/logout"
+    },
   ];
 
   useEffect(() => {
@@ -62,6 +143,13 @@ const DashbaordLayout = ({ children, title = "", hedartitle="", titleAction = nu
   }, []);
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+
+  const toggleSubmenu = (menuName) => {
+    setOpenSubmenus((prev) => ({
+      ...prev,
+      [menuName]: !prev[menuName],
+    }));
+  };
 
   return (
     <div className="h-screen flex overflow-hidden">
@@ -82,32 +170,86 @@ const DashbaordLayout = ({ children, title = "", hedartitle="", titleAction = nu
           <ul>
             {navItems.map((item) => (
               <li key={item.name} className="mb-3">
-                <Link
-                  to={item.path}
-                  className="flex items-center group"
-                  onClick={() => windowWidth < 768 && setIsMobileMenuOpen(false)}
+                <div
+                  className="flex items-center justify-between cursor-pointer group"
+                  onClick={() => {
+                    if (item.children) {
+                      toggleSubmenu(item.name);
+                    } else {
+                      navigate(item.path);
+                      if (windowWidth < 768) setIsMobileMenuOpen(false);
+                    }
+                  }}
                 >
-                  <div
-                    className={`w-[40px] h-[40px] rounded-full flex justify-center items-center transition-all duration-200 
-                    ${location.pathname === item.path
-                        ? "bg-[linear-gradient(90deg,_#C82D30_1.89%,_#362695_67.23%,_#B12F31_136.79%)] text-white"
-                        : "text-[#6B7280] group-hover:bg-[linear-gradient(90deg,_#C82D30_1.89%,_#362695_67.23%,_#B12F31_136.79%)] group-hover:text-white"
-                      }`}
-                  >
-                    <item.icon size={20} />
-                  </div>
-                  <span
-                    className={`font-urbanist font-[500] leading-[150%] ml-3 text-[16px] ${location.pathname === item.path
+                  <div className="flex items-center">
+                    <div
+                      className={`w-[40px] h-[40px] rounded-full flex justify-center items-center transition-all duration-200 
+              ${location.pathname === item.path || location.pathname.includes(item.path)
+                          ? "bg-[linear-gradient(90deg,_#C82D30_1.89%,_#362695_67.23%,_#B12F31_136.79%)] text-white"
+                          : "text-[#6B7280] group-hover:bg-[linear-gradient(90deg,_#C82D30_1.89%,_#362695_67.23%,_#B12F31_136.79%)] group-hover:text-white"
+                        }`}
+                    >
+                      <item.icon size={20} />
+                    </div>
+                    <span
+                      className={`font-urbanist font-[500] leading-[150%] ml-3 text-[16px] ${location.pathname === item.path || location.pathname.includes(item.path)
                         ? "text-transparent bg-clip-text bg-[linear-gradient(90deg,_#C82D30_1.89%,_#362695_67.23%,_#B12F31_136.79%)]"
                         : "text-[#6B7280] group-hover:text-transparent bg-clip-text bg-[linear-gradient(90deg,_#C82D30_1.89%,_#362695_67.23%,_#B12F31_136.79%)]"
-                      }`}
-                  >
-                    {item.name}
-                  </span>
-                </Link>
+                        }`}
+                    >
+                      {item.name}
+                    </span>
+                  </div>
+                  {item.children && (
+                    <IoIosArrowDown
+                      className={`
+    w-4 h-4 ml-2 transition-transform duration-300
+    ${openSubmenus[item.name]
+                          ? "rotate-180 text-[#362695]"
+                          : "text-[#6B7280] group-hover:text-[#362695]"
+                        }`}
+                    />
+                  )}
+                </div>
+
+                {/* Submenu */}
+                {item.children && openSubmenus[item.name] && (
+                  <ul className="space-y-2 bg-[#ECF0F5] rounded-[12px] p-2.5 mt-2">
+                    {item.children.map((subItem) => (
+                      <li key={subItem.name}>
+                        <Link
+                          to={subItem.path}
+                          onClick={() => windowWidth < 768 && setIsMobileMenuOpen(false)}
+                        >
+                          <div className="group flex items-center">
+                            <div
+                              className={`w-[40px] h-[40px] rounded-full flex justify-center items-center transition-all duration-200 
+              ${location.pathname === subItem.path
+                                  ? "bg-[linear-gradient(90deg,_#C82D30_1.89%,_#362695_67.23%,_#B12F31_136.79%)] text-white"
+                                  : "text-[#6B7280] group-hover:bg-[linear-gradient(90deg,_#C82D30_1.89%,_#362695_67.23%,_#B12F31_136.79%)] group-hover:text-white"
+                                }`}
+                            >
+                              <subItem.icon size={18} />
+                            </div>
+                            <span
+                              className={`font-urbanist font-[500] leading-[150%] ml-3 text-[16px] transition-all ${location.pathname === subItem.path
+                                ? "text-transparent bg-clip-text bg-[linear-gradient(90deg,_#C82D30_1.89%,_#362695_67.23%,_#B12F31_136.79%)]"
+                                : "text-[#6B7280] hover:text-transparent bg-clip-text group-hover:bg-[linear-gradient(90deg,_#C82D30_1.89%,_#362695_67.23%,_#B12F31_136.79%)]"
+                                }`}
+                            >
+                              {subItem.name}
+                            </span>
+                          </div>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+
+                )}
               </li>
             ))}
           </ul>
+
         </nav>
       </aside>
 

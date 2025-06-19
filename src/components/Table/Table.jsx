@@ -1,72 +1,83 @@
 import React from "react";
-import { FaEye, FaEdit, FaTrash } from "react-icons/fa";
+import { PiEyeBold } from "react-icons/pi";
+import { FiEdit } from "react-icons/fi";
+import { RiDeleteBin6Line } from "react-icons/ri";
+import img from '../../assets/images/Adviser1.png'
+import img1 from '../../assets/images/Adviser2.png'
+import img2 from '../../assets/images/Adviser3.png'
+
 
 const users = [
     {
-        id: 1,
+        number: 1,
+        img: img, 
         name: "Abhishek Sharma",
-        contact: "9874578818",
-        email: "Abhisheksharma@gmail.com",
-        image: "https://randomuser.me/api/portraits/men/1.jpg",
+        contact: 9874578818,
+        email: 'Abhisheksharma@gmail.com',
     },
     {
-        id: 2,
+        number: 2,
+        img: img1, 
         name: "Jane Cooper",
-        contact: "9874575452",
-        email: "janecooper@gmail.com",
-        image: "https://randomuser.me/api/portraits/women/2.jpg",
+        contact: 987457452,
+        email: 'janecooper@gmail.com',
     },
     {
-        id: 3,
+        number: 3,
+        img: img2,
         name: "Jenny Wilson",
-        contact: "9525248818",
-        email: "jennywilson@gmail.com",
-        image: "https://randomuser.me/api/portraits/women/3.jpg",
+        contact: 952524818,
+        email: 'jennywilson@gmail.com',
     },
 ];
 
+
 const UserTable = () => {
     return (
-        <div className="p-6 min-h-screen">
+        <div className="min-h-screen">
             <div className="overflow-x-auto">
                 {/* Table Header */}
-                <div className="grid grid-cols-6 bg-[#EFF3FA] p-3 rounded-t-lg text-[14px] font-medium text-gray-700">
-                    <div className="">#</div>
-                    <div className="">Profile</div>
-                    <div className="">Name</div>
-                    <div className="">Contact No.</div>
-                    <div className="">EMAIL ID</div>
-                    <div className="">Action</div>
+                <div className="grid grid-cols-6 bg-white px-6 py-2.5 rounded-[8px]">
+                    <div className="flex items-center gap-8">
+                        <div className="font-urbanist text-md font-semibold text-[#0A0E15]">#</div>
+                        <div className="font-urbanist text-md font-semibold text-[#0A0E15]">Profile</div>
+                    </div>
+                    <div className="font-urbanist text-md font-semibold text-[#0A0E15]">Name</div>
+                    <div className="font-urbanist text-md font-semibold text-[#0A0E15]">Contact No.</div>
+                    <div className="font-urbanist text-md font-semibold text-[#0A0E15]">EMAIL ID</div>
+                    <div className="font-urbanist text-md font-semibold text-[#0A0E15]">Action</div>
                 </div>
 
                 {/* Table Rows */}
                 {users.map((user, index) => (
                     <div
                         key={user.id}
-                        className="grid grid-cols-6 items-center bg-white my-2 py-3 px-3 rounded-lg shadow-sm text-sm"
+                        className="grid grid-cols-6 items-center bg-white px-6 py-2.5 rounded-[8px] my-2"
                     >
-                        <div>{index + 1}</div>
-                        <div>
-                            <img
-                                src={user.image}
-                                alt={user.name}
-                                className="w-10 h-10 rounded-full object-cover"
-                            />
+                        <div className="flex items-center gap-8">
+                            <div className="font-manrope text-[15px] font-[500] text-[#000000]">{index + 1}</div>
+                            <div>
+                                <img
+                                    src={user.img}
+                                    alt={user.name}
+                                    className="w-10 h-10 rounded-full object-cover"
+                                />
+                            </div>
                         </div>
-                        <div>{user.name}</div>
-                        <div>{user.contact}</div>
-                        <div>{user.email}</div>
-                        <div className="flex gap-3 text-[13px]">
-                            <button className="text-green-600 hover:underline flex items-center gap-1">
-                                <FaEye className="text-xs" />
+                        <div className="font-manrope text-[15px] font-[400] text-[#000000]">{user.name}</div>
+                        <div className="font-manrope text-[15px] font-[400] text-[#000000]">{user.contact}</div>
+                        <div className="font-manrope text-[15px] font-[400] text-[#000000]">{user.email}</div>
+                        <div className="flex items-center gap-2">
+                            <button className="font-manrope text-[15px] font-[400] text-[#11968A] flex items-center gap-1">
+                                <PiEyeBold color='#11968A' size={20} />
                                 View
                             </button>
-                            <button className="text-blue-600 hover:underline flex items-center gap-1">
-                                <FaEdit className="text-xs" />
+                            <button className="font-manrope text-[15px] font-[400] text-[#273143] flex items-center gap-1">
+                                <FiEdit color='#273143' size={20} />
                                 Edit
                             </button>
-                            <button className="text-red-500 hover:underline flex items-center gap-1">
-                                <FaTrash className="text-xs" />
+                            <button className="font-manrope text-[15px] font-[400] text-[#C23A3A] flex items-center gap-1">
+                                <RiDeleteBin6Line color='#C23A3A' size={20} />
                                 Delete
                             </button>
                         </div>

@@ -373,92 +373,97 @@ const Dashboard = () => {
                             <MdOutlineCalendarToday />
                         </button>
                     </div>
-                    <div className="space-y-3">
-                        {/* Header Row */}
-                        <div className="bg-white rounded-[8px] px-6 py-2.5 flex items-center justify-between">
-                            <div className="flex items-center gap-5 w-[15%]">
-                                <h6 className="font-urbanist text-md font-semibold text-[#0A0E15]">#</h6>
-                                <h6 className="font-urbanist text-md font-semibold text-[#0A0E15]">Category</h6>
-                            </div>
-                            <h6 className="w-[10%] font-urbanist text-md font-semibold text-[#0A0E15]">Session</h6>
-                            <h6 className="w-[15%] font-urbanist text-md font-semibold text-[#0A0E15]">Revenue</h6>
-                            <h6 className="w-[15%] font-urbanist text-md font-semibold text-[#0A0E15]">Avg Rating</h6>
-                            <h6 className="w-[15%] font-urbanist text-md font-semibold text-[#0A0E15]">Packages Sold</h6>
-                            <h6 className="w-[20%] font-urbanist text-md font-semibold text-[#0A0E15]">Last 30 Days Growth</h6>
-                        </div>
-
-                        {/* Dynamic Rows */}
-                        {categories.map((item, index) => (
-                            <div
-                                key={index}
-                                className="bg-white rounded-[8px] px-6 py-2.5 flex items-center justify-between"
-                            >
-                                <div className="flex items-center gap-5 w-[15%]">
-                                    <span className={`w-5 h-5 rounded-full ${item.color}`}></span>
-                                    <h6 className="font-manrope text-[15px] font-[500] text-[#000000]">{item.name}</h6>
-                                </div>
-                                <h6 className="w-[10%] font-manrope text-[15px] font-[400] text-[#000000]">{item.session}</h6>
-                                <h6 className="w-[15%] font-manrope text-[15px] font-[400] text-[#000000]">{item.revenue}</h6>
-                                <h6 className="w-[15%] font-manrope text-[15px] font-[400] text-[#000000] flex items-center gap-1">
-                                    {item.rating} <span><MdOutlineStarPurple500 color='#FFB400' size={25} /></span>
-                                </h6>
-                                <h6 className="w-[15%] font-manrope text-[15px] font-[400] text-[#000000]">{item.sold}</h6>
-                                <h6 className={`w-[20%] font-manrope text-[15px] font-[400] ${item.growthColor}`}>
-                                    {item.growth}
-                                </h6>
-                            </div>
-                        ))}
+                    <div className='overflow-x-auto'>
+                        <table className="min-w-full border-collapse">
+                            <thead>
+                                <tr className="bg-white text-left font-urbanist text-md font-semibold text-[#0A0E15]">
+                                    <th className="px-6 py-2.5 border-b border-gray-500 rounded-tl-[8px] rounded-bl-[8px]">#</th>
+                                    <th className="px-6 py-2.5 border-b border-gray-500">Category</th>
+                                    <th className="px-6 py-2.5 border-b border-gray-500">Session</th>
+                                    <th className="px-6 py-2.5 border-b border-gray-500">Revenue</th>
+                                    <th className="px-6 py-2.5 border-b border-gray-500">Avg Rating</th>
+                                    <th className="px-6 py-2.5 border-b border-gray-500">Packages Sold</th>
+                                    <th className="px-6 py-2.5 border-b border-gray-500 rounded-tr-[8px] rounded-br-[8px]">Last 30 Days Growth</th>
+                                </tr>
+                            </thead>
+                            <tbody className="font-manrope text-[15px] font-[400] text-[#000000]">
+                                {categories.map((i, index) => (
+                                    <tr key={index} className="hover:bg-[#E2E8F0] bg-white space-y-10 transition-all">
+                                        <td className="px-6 py-2.5 border-b border-[#E2E8F0]">
+                                            <div className={`w-5 h-5 rounded-full ${i.color}`}></div>
+                                        </td>
+                                        <td className="px-6 py-2.5 border-b border-[#E2E8F0]">{i.name}</td>
+                                        <td className="px-6 py-2.5 border-b border-[#E2E8F0]">{i.session}</td>
+                                        <td className="px-6 py-2.5 border-b border-[#E2E8F0]">{i.revenue}</td>
+                                        <td className="px-6 py-2.5 border-b border-[#E2E8F0]">
+                                            <div className='flex items-center gap-1.5'>
+                                                <span>{i.rating}</span>
+                                                <MdOutlineStarPurple500 color='#FFB400' size={25} />
+                                            </div>
+                                        </td>
+                                        <td className="px-6 py-2.5 border-b border-[#E2E8F0]">{i.sold}</td>
+                                        <td className={`px-6 py-2.5 border-b border-[#E2E8F0] ${i.growthColor}`}>
+                                            {i.growth}
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
                 <div className="">
                     <div className='flex items-center justify-between mb-4'>
                         <label htmlFor="" className='block font-manrope text-sm font-bold text-[#000000] m-0'>Top Adviser</label>
                     </div>
-                    <div className="space-y-3">
-                        {/* Header Row */}
-                        <div className="bg-white rounded-[8px] px-6 py-2.5 flex items-center justify-between">
-                            <div className="flex items-center gap-5 w-[10%]">
-                                <h6 className="font-urbanist text-md font-semibold text-[#0A0E15]">#</h6>
-                                <h6 className="font-urbanist text-md font-semibold text-[#0A0E15]">Profile</h6>
-                            </div>
-                            <h6 className="w-[15%] font-urbanist text-md font-semibold text-[#0A0E15]">Name</h6>
-                            <h6 className="w-[15%] font-urbanist text-md font-semibold text-[#0A0E15]">Contract No</h6>
-                            <h6 className="w-[15%] font-urbanist text-md font-semibold text-[#0A0E15]">Total  Session</h6>
-                            <h6 className="w-[15%] font-urbanist text-md font-semibold text-[#0A0E15]">Language</h6>
-                        </div>
-
-                        {/* Dynamic Rows */}
-                        {adviser.map((item, index) => (
-                            <div
-                                key={index}
-                                className="bg-white rounded-[8px] px-6 py-2.5 flex items-center justify-between"
-                            >
-                                <div className="flex items-center gap-5 w-[10%]">
-                                    <h6 className="font-manrope text-[15px] font-[500] text-[#000000]">{item.number}</h6>
-                                    <img src={item.img} alt="" />
-                                </div>
-                                <h6 className="w-[15%] font-manrope text-[15px] font-[400] text-[#000000]">{item.name}</h6>
-                                <h6 className="w-[15%] font-manrope text-[15px] font-[400] text-[#000000]">{item.contact}</h6>
-                                <div className="flex items-center gap-2 w-[15%]">
-                                    <h6 className="font-manrope text-[15px] font-[400] text-[#707070] flex items-center gap-1">
-                                        <span><MdOutlineMessage color='#707070' size={20} /></span> {item.session.msg}
-                                    </h6>
-                                    <h6 className="font-manrope text-[15px] font-[400] text-[#707070] flex items-center gap-1">
-                                        <span><MdCallEnd color='#707070' size={20} /></span>{item.session.call}
-                                    </h6>
-                                    <h6 className="font-manrope text-[15px] font-[400] text-[#707070] flex items-center gap-1">
-                                        <span><MdOutlineVideoChat color='#707070' size={20} /></span> {item.session.vc}
-                                    </h6>
-                                </div>
-                                <h6 className="w-[15%] font-manrope text-[15px] font-[400] text-[#000000] flex items-center gap-2">
-                                    {item.language.flatMap((i) =>
-                                        <span>
-                                            {i}
-                                        </span>
-                                    )}
-                                </h6>
-                            </div>
-                        ))}
+                    <div className='overflow-x-auto'>
+                        <table className="min-w-full border-collapse">
+                            <thead>
+                                <tr className="bg-white text-left font-urbanist text-md font-semibold text-[#0A0E15]">
+                                    <th className="px-6 py-2.5 border-b border-gray-500 rounded-tl-[8px] rounded-bl-[8px]">#</th>
+                                    <th className="px-6 py-2.5 border-b border-gray-500">Profile</th>
+                                    <th className="px-6 py-2.5 border-b border-gray-500">Name</th>
+                                    <th className="px-6 py-2.5 border-b border-gray-500">Contract No</th>
+                                    <th className="px-6 py-2.5 border-b border-gray-500">Total  Session</th>
+                                    <th className="px-6 py-2.5 border-b border-gray-500 rounded-tr-[8px] rounded-br-[8px]">Language</th>
+                                </tr>
+                            </thead>
+                            <tbody className="font-manrope text-[15px] font-[400] text-[#000000]">
+                                {adviser.map((i, index) => (
+                                    <tr key={index} className="hover:bg-[#E2E8F0] bg-white space-y-10 transition-all">
+                                        <td className="px-6 py-2.5 border-b border-[#E2E8F0]">{index + 1}</td>
+                                        <td className="px-6 py-2.5 border-b border-[#E2E8F0]">
+                                            <img
+                                                src={i.img}
+                                                alt="Profile"
+                                                className="w-10 h-10 rounded-full object-cover"
+                                            />
+                                        </td>
+                                        <td className="px-6 py-2.5 border-b border-[#E2E8F0]">{i.name}</td>
+                                        <td className="px-6 py-2.5 border-b border-[#E2E8F0]">{i.contact}</td>
+                                        <td className="px-6 py-2.5 border-b border-[#E2E8F0]">
+                                            <div className="flex items-center gap-2">
+                                                <h6 className="font-manrope text-[15px] font-[400] text-[#707070] flex items-center gap-1">
+                                                    <span><MdOutlineMessage color='#707070' size={20} /></span> {i.session.msg}
+                                                </h6>
+                                                <h6 className="font-manrope text-[15px] font-[400] text-[#707070] flex items-center gap-1">
+                                                    <span><MdCallEnd color='#707070' size={20} /></span>{i.session.call}
+                                                </h6>
+                                                <h6 className="font-manrope text-[15px] font-[400] text-[#707070] flex items-center gap-1">
+                                                    <span><MdOutlineVideoChat color='#707070' size={20} /></span> {i.session.vc}
+                                                </h6>
+                                            </div>
+                                        </td>
+                                        <td className="px-6 py-2.5 border-b border-[#E2E8F0] flex items-center gap-2">
+                                            {i.language.flatMap((i) =>
+                                                <span>
+                                                    {i}
+                                                </span>
+                                            )}
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

@@ -1,10 +1,6 @@
 import React from 'react'
 import DashbaordLayout from '../../components/DashbaordLayout'
 
-
-import { MdOutlineMessage } from "react-icons/md";
-import { MdCallEnd } from "react-icons/md";
-import { MdOutlineVideoChat } from "react-icons/md";
 import { IoSearch } from "react-icons/io5";
 import { PiEyeBold } from "react-icons/pi";
 import { FiEdit } from "react-icons/fi";
@@ -18,7 +14,7 @@ import UserTable from '../../components/Table/Table';
 
 
 
-const adviser = [
+const users = [
     {
         number: 1,
         img: img, // make sure img is imported or defined elsewhere
@@ -77,48 +73,54 @@ const AllUsers = () => {
                         </button>
                     </div>
                 </div>
-                <div className="space-y-3">
-                    {/* Header Row */}
-                    <div className="bg-white rounded-[8px] px-6 py-2.5 flex items-center justify-between">
-                        <div className="flex items-center gap-5 w-[15%]">
-                            <h6 className="font-urbanist text-md font-semibold text-[#0A0E15]">#</h6>
-                            <h6 className="font-urbanist text-md font-semibold text-[#0A0E15]">Profile</h6>
-                        </div>
-                        <h6 className="w-[10%] font-urbanist text-md font-semibold text-[#0A0E15]">Name</h6>
-                        <h6 className="w-[15%] font-urbanist text-md font-semibold text-[#0A0E15]">Contract No</h6>
-                        <h6 className="w-[15%] font-urbanist text-md font-semibold text-[#0A0E15]">EMAIL ID</h6>
-                        <h6 className="w-[15%] font-urbanist text-md font-semibold text-[#0A0E15]">Action</h6>
-                    </div>
-
-                    {/* Dynamic Rows */}
-                    {adviser.map((item, index) => (
-                        <div
-                            key={index}
-                            className="bg-white rounded-[8px] px-6 py-2.5 flex items-center justify-between"
-                        >
-                            <div className="flex items-center gap-5 w-[15%]">
-                                <h6 className="font-manrope text-[15px] font-[500] text-[#000000]">{item.number}</h6>
-                                <img src={item.img} alt="" />
-                            </div>
-                            <h6 className="w-[10%] font-manrope text-[15px] font-[400] text-[#000000]">{item.name}</h6>
-                            <h6 className="w-[15%] font-manrope text-[15px] font-[400] text-[#000000]">{item.contact}</h6>
-                            <h6 className="w-[15%] font-manrope text-[15px] font-[400] text-[#000000]">{item.email}</h6>
-                            <div className="flex items-center gap-2 w-[15%]">
-                                <h6 className="font-manrope text-[15px] font-[400] text-[#11968A] flex items-center gap-1">
-                                    <span><PiEyeBold color='#11968A' size={20} /></span> View
-                                </h6>
-                                <h6 className="font-manrope text-[15px] font-[400] text-[#273143] flex items-center gap-1">
-                                    <span><FiEdit color='#273143' size={20} /></span>Edit
-                                </h6>
-                                <h6 className="font-manrope text-[15px] font-[400] text-[#C23A3A] flex items-center gap-1">
-                                    <span><RiDeleteBin6Line color='#C23A3A' size={20} /></span> Delete
-                                </h6>
-                            </div>
-                        </div>
-                    ))}
+                <div className='overflow-x-auto min-h-screen'>
+                    <table className="min-w-full border-collapse">
+                        <thead>
+                            <tr className="bg-white text-left font-urbanist text-md font-semibold text-[#0A0E15]">
+                                <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0] rounded-tl-[10px] rounded-bl-[10px]">#</th>
+                                <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Profile</th>
+                                <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Name</th>
+                                <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Email</th>
+                                <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Contact</th>
+                                <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0] rounded-tr-[10px] rounded-br-[10px]">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody className="font-manrope text-[15px] font-[400] text-[#000000]">
+                            {users.map((i, index) => (
+                                <tr key={index} className="hover:bg-[#E2E8F0] bg-white space-y-10 transition-all">
+                                    <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0] rounded-tl-[8px] rounded-bl-[8px]">{index + 1}</td>
+                                    <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">
+                                        <img
+                                            src={i.img}
+                                            alt="Profile"
+                                            className="w-10 h-10 rounded-full object-cover"
+                                        />
+                                    </td>
+                                    <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.name}</td>
+                                    <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.email}</td>
+                                    <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.contact}</td>
+                                    <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0] rounded-tl-[8px] rounded-bl-[8px]">
+                                        <div className="flex items-center gap-2">
+                                            <button className="font-manrope text-[15px] font-[400] text-[#11968A] flex items-center gap-1">
+                                                <PiEyeBold color='#11968A' size={20} />
+                                                View
+                                            </button>
+                                            <button className="font-manrope text-[15px] font-[400] text-[#273143] flex items-center gap-1">
+                                                <FiEdit color='#273143' size={20} />
+                                                Edit
+                                            </button>
+                                            <button className="font-manrope text-[15px] font-[400] text-[#C23A3A] flex items-center gap-1">
+                                                <RiDeleteBin6Line color='#C23A3A' size={20} />
+                                                Delete
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
                 </div>
             </div>
-            <UserTable/>
         </DashbaordLayout>
     )
 }
