@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import DashbaordLayout from '../../components/DashbaordLayout'
 
 import { IoSearch } from "react-icons/io5";
@@ -10,7 +10,8 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import img from '../../assets/images/Adviser1.png'
 import img1 from '../../assets/images/Adviser2.png'
 import img2 from '../../assets/images/Adviser3.png'
-import UserTable from '../../components/Table/Table';
+import { useNavigate } from 'react-router-dom';
+import { ConfirmModal } from '../../components/Modals/Modal';
 
 
 
@@ -45,10 +46,23 @@ const users = [
 
 
 const AdviserList = () => {
+    const navigate = useNavigate();
+    const [showModal, setShowModal] = useState(false);
+
+    const handleConfirm = () => {
+        console.log("Suspension confirmed!");
+        setShowModal(false);
+    };
     return (
         <DashbaordLayout title="Adviser"
             hedartitle="Adviser"
         >
+            <ConfirmModal
+                isOpen={showModal}
+                onClose={() => setShowModal(false)}
+                onConfirm={handleConfirm}
+                text="Delete"
+            />
             <div className="mt-5">
                 <div className='flex items-center justify-between mb-4'>
                     <div className='flex items-center gap-2'>
@@ -73,56 +87,52 @@ const AdviserList = () => {
                         </button>
                     </div>
                 </div>
-                <div className="min-h-screen">
-                    <div className="overflow-x-auto">
-                        {/* Table Header */}
-                        <div className="grid grid-cols-6 bg-white px-6 py-2.5 rounded-[8px]">
-                            <div className="flex items-center gap-8">
-                                <div className="font-urbanist text-md font-semibold text-[#0A0E15]">#</div>
-                                <div className="font-urbanist text-md font-semibold text-[#0A0E15]">Profile</div>
-                            </div>
-                            <div className="font-urbanist text-md font-semibold text-[#0A0E15]">Name</div>
-                            <div className="font-urbanist text-md font-semibold text-[#0A0E15]">Contact No.</div>
-                            <div className="font-urbanist text-md font-semibold text-[#0A0E15]">EMAIL ID</div>
-                            <div className="font-urbanist text-md font-semibold text-[#0A0E15]">Action</div>
-                        </div>
-
-                        {/* Table Rows */}
-                        {users.map((user, index) => (
-                            <div
-                                key={user.id}
-                                className="grid grid-cols-6 items-center bg-white px-6 py-2.5 rounded-[8px] my-4"
-                            >
-                                <div className="flex items-center gap-8">
-                                    <div className="font-manrope text-[15px] font-[500] text-[#000000]">{index + 1}</div>
-                                    <div>
+                <div className='overflow-x-auto min-h-screen'>
+                    <table className="min-w-full border-collapse">
+                        <thead>
+                            <tr className="bg-white text-left font-urbanist text-md font-semibold text-[#0A0E15]">
+                                <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0] rounded-tl-[10px] rounded-bl-[10px]">#</th>
+                                <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Profile</th>
+                                <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Name</th>
+                                <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Email</th>
+                                <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Contact</th>
+                                <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0] rounded-tr-[10px] rounded-br-[10px]">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody className="font-manrope text-[15px] font-[400] text-[#000000]">
+                            {users.map((i, index) => (
+                                <tr key={index} className=" bg-white space-y-10 transition-all">
+                                    <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0] rounded-tl-[8px] rounded-bl-[8px]">{index + 1}</td>
+                                    <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">
                                         <img
-                                            src={user.img}
-                                            alt={user.name}
+                                            src={i.img}
+                                            alt="Profile"
                                             className="w-10 h-10 rounded-full object-cover"
                                         />
-                                    </div>
-                                </div>
-                                <div className="font-manrope text-[15px] font-[400] text-[#000000]">{user.name}</div>
-                                <div className="font-manrope text-[15px] font-[400] text-[#000000]">{user.contact}</div>
-                                <div className="font-manrope text-[15px] font-[400] text-[#000000]">{user.email}</div>
-                                <div className="flex items-center gap-2">
-                                    <button className="font-manrope text-[15px] font-[400] text-[#11968A] flex items-center gap-1">
-                                        <PiEyeBold color='#11968A' size={20} />
-                                        View
-                                    </button>
-                                    <button className="font-manrope text-[15px] font-[400] text-[#273143] flex items-center gap-1">
-                                        <FiEdit color='#273143' size={20} />
-                                        Edit
-                                    </button>
-                                    <button className="font-manrope text-[15px] font-[400] text-[#C23A3A] flex items-center gap-1">
-                                        <RiDeleteBin6Line color='#C23A3A' size={20} />
-                                        Delete
-                                    </button>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
+                                    </td>
+                                    <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.name}</td>
+                                    <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.email}</td>
+                                    <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.contact}</td>
+                                    <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0] rounded-tl-[8px] rounded-bl-[8px]">
+                                        <div className="flex items-center gap-2">
+                                            <button onClick={() => navigate(`/adviser/list/details/${index + 1}`)} className="font-manrope text-[15px] font-[400] text-[#11968A] flex items-center gap-1">
+                                                <PiEyeBold color='#11968A' size={20} />
+                                                View
+                                            </button>
+                                            <button className="font-manrope text-[15px] font-[400] text-[#273143] flex items-center gap-1">
+                                                <FiEdit color='#273143' size={20} />
+                                                Edit
+                                            </button>
+                                            <button onClick={() => setShowModal(true)} className="font-manrope text-[15px] font-[400] text-[#C23A3A] flex items-center gap-1">
+                                                <RiDeleteBin6Line color='#C23A3A' size={20} />
+                                                Delete
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </DashbaordLayout>

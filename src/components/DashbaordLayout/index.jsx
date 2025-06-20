@@ -290,11 +290,11 @@ const DashbaordLayout = ({ children, title = "", hedartitle = "", titleAction = 
         {/* Main Content */}
         <main className="pt-[90px] h-full  px-4 overflow-hidden flex-1">
           <div className="h-full overflow-auto hidescroll">
-            <div className="flex items-center gap-2 flex-wrap">
+            <div className="flex items-center gap-2">
+              {titleAction}
               <h2 className="font-urbanist text-[18px] font-[600] text-[#0A0E15] whitespace-nowrap">
                 {title}
               </h2>
-              {titleAction}
             </div>
             {children}
           </div>

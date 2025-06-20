@@ -377,32 +377,32 @@ const Dashboard = () => {
                         <table className="min-w-full border-collapse">
                             <thead>
                                 <tr className="bg-white text-left font-urbanist text-md font-semibold text-[#0A0E15]">
-                                    <th className="px-6 py-2.5 border-b border-gray-500 rounded-tl-[8px] rounded-bl-[8px]">#</th>
-                                    <th className="px-6 py-2.5 border-b border-gray-500">Category</th>
-                                    <th className="px-6 py-2.5 border-b border-gray-500">Session</th>
-                                    <th className="px-6 py-2.5 border-b border-gray-500">Revenue</th>
-                                    <th className="px-6 py-2.5 border-b border-gray-500">Avg Rating</th>
-                                    <th className="px-6 py-2.5 border-b border-gray-500">Packages Sold</th>
-                                    <th className="px-6 py-2.5 border-b border-gray-500 rounded-tr-[8px] rounded-br-[8px]">Last 30 Days Growth</th>
+                                    <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0] rounded-tl-[8px] rounded-bl-[8px]">#</th>
+                                    <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Category</th>
+                                    <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Session</th>
+                                    <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Revenue</th>
+                                    <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Avg Rating</th>
+                                    <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Packages Sold</th>
+                                    <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0] rounded-tr-[8px] rounded-br-[8px]">Last 30 Days Growth</th>
                                 </tr>
                             </thead>
                             <tbody className="font-manrope text-[15px] font-[400] text-[#000000]">
                                 {categories.map((i, index) => (
-                                    <tr key={index} className="hover:bg-[#E2E8F0] bg-white space-y-10 transition-all">
-                                        <td className="px-6 py-2.5 border-b border-[#E2E8F0]">
+                                    <tr key={index} className="bg-white space-y-10 transition-all">
+                                        <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">
                                             <div className={`w-5 h-5 rounded-full ${i.color}`}></div>
                                         </td>
-                                        <td className="px-6 py-2.5 border-b border-[#E2E8F0]">{i.name}</td>
-                                        <td className="px-6 py-2.5 border-b border-[#E2E8F0]">{i.session}</td>
-                                        <td className="px-6 py-2.5 border-b border-[#E2E8F0]">{i.revenue}</td>
-                                        <td className="px-6 py-2.5 border-b border-[#E2E8F0]">
+                                        <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.name}</td>
+                                        <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.session}</td>
+                                        <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.revenue}</td>
+                                        <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">
                                             <div className='flex items-center gap-1.5'>
                                                 <span>{i.rating}</span>
                                                 <MdOutlineStarPurple500 color='#FFB400' size={25} />
                                             </div>
                                         </td>
-                                        <td className="px-6 py-2.5 border-b border-[#E2E8F0]">{i.sold}</td>
-                                        <td className={`px-6 py-2.5 border-b border-[#E2E8F0] ${i.growthColor}`}>
+                                        <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.sold}</td>
+                                        <td className={`px-6 py-2.5 border-b-10 border-[#E2E8F0] ${i.growthColor}`}>
                                             {i.growth}
                                         </td>
                                     </tr>
@@ -419,28 +419,28 @@ const Dashboard = () => {
                         <table className="min-w-full border-collapse">
                             <thead>
                                 <tr className="bg-white text-left font-urbanist text-md font-semibold text-[#0A0E15]">
-                                    <th className="px-6 py-2.5 border-b border-gray-500 rounded-tl-[8px] rounded-bl-[8px]">#</th>
-                                    <th className="px-6 py-2.5 border-b border-gray-500">Profile</th>
-                                    <th className="px-6 py-2.5 border-b border-gray-500">Name</th>
-                                    <th className="px-6 py-2.5 border-b border-gray-500">Contract No</th>
-                                    <th className="px-6 py-2.5 border-b border-gray-500">Total  Session</th>
-                                    <th className="px-6 py-2.5 border-b border-gray-500 rounded-tr-[8px] rounded-br-[8px]">Language</th>
+                                    <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0] rounded-tl-[8px] rounded-bl-[8px]">#</th>
+                                    <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Profile</th>
+                                    <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Name</th>
+                                    <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Contract No</th>
+                                    <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Total  Session</th>
+                                    <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0] rounded-tr-[8px] rounded-br-[8px]">Language</th>
                                 </tr>
                             </thead>
                             <tbody className="font-manrope text-[15px] font-[400] text-[#000000]">
                                 {adviser.map((i, index) => (
-                                    <tr key={index} className="hover:bg-[#E2E8F0] bg-white space-y-10 transition-all">
-                                        <td className="px-6 py-2.5 border-b border-[#E2E8F0]">{index + 1}</td>
-                                        <td className="px-6 py-2.5 border-b border-[#E2E8F0]">
+                                    <tr key={index} className=" bg-white space-y-10 transition-all">
+                                        <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{index + 1}</td>
+                                        <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">
                                             <img
                                                 src={i.img}
                                                 alt="Profile"
                                                 className="w-10 h-10 rounded-full object-cover"
                                             />
                                         </td>
-                                        <td className="px-6 py-2.5 border-b border-[#E2E8F0]">{i.name}</td>
-                                        <td className="px-6 py-2.5 border-b border-[#E2E8F0]">{i.contact}</td>
-                                        <td className="px-6 py-2.5 border-b border-[#E2E8F0]">
+                                        <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.name}</td>
+                                        <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.contact}</td>
+                                        <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">
                                             <div className="flex items-center gap-2">
                                                 <h6 className="font-manrope text-[15px] font-[400] text-[#707070] flex items-center gap-1">
                                                     <span><MdOutlineMessage color='#707070' size={20} /></span> {i.session.msg}
@@ -453,9 +453,9 @@ const Dashboard = () => {
                                                 </h6>
                                             </div>
                                         </td>
-                                        <td className="px-6 py-2.5 border-b border-[#E2E8F0] flex items-center gap-2">
+                                        <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0] ">
                                             {i.language.flatMap((i) =>
-                                                <span>
+                                                <span className='ml-2'>
                                                     {i}
                                                 </span>
                                             )}

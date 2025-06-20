@@ -7,6 +7,8 @@ import AdviserList from './pages/Adviser/AdviserList';
 import PendingRequest from './pages/Adviser/PendingRequest';
 import SuspendedList from './pages/Adviser/SuspendedList';
 import Appointment from './pages/Appointment/Appointment';
+import UserDetails from './pages/User/UserDetails';
+import AdviserDetails from './pages/Adviser/AdviserDetails';
 
 const Login = lazy(() => import('./pages/Login'));
 
@@ -34,6 +36,8 @@ export default function App() {
           <Route path="/adviser/pending" element={<PendingRequest />} />
           <Route path="/adviser/suspended" element={<SuspendedList />} />
           <Route path="/appointment" element={<Appointment />} />
+          <Route path="/users/details/:id" element={<UserDetails />} />
+          <Route path="/adviser/list/details/:id" element={<AdviserDetails />} />
         </Routes>
       </Suspense>
     </Router>

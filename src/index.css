@@ -28,7 +28,7 @@ a {
 
 button {
   cursor: pointer;
-  border: none;
+  /* border: none; */
   outline: none;
 }
 
