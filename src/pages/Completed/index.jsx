@@ -25,11 +25,11 @@ const chat = [
         "userName": "Sharma",
         "type": "Chat",
         "dateTime": "21-May-2025 11:05 AM",
-        "status": "Upcoming",
+        "status": "Completed",
         "ratePerMin": 100,
-        "durationMin": "-",
-        "amount": "-",
-        "action": "Cancel"
+        "durationMin": "10",
+        "amount": "100",
+        "action": "Summary"
     },
     {
         "id": 2,
@@ -37,11 +37,11 @@ const chat = [
         "userName": "Sharma",
         "type": "Chat",
         "dateTime": "21-May-2025 11:05 AM",
-        "status": "Upcoming",
+        "status": "Completed",
         "ratePerMin": 100,
-        "durationMin": "-",
-        "amount": "-",
-        "action": "Cancel"
+        "durationMin": "10",
+        "amount": "100",
+        "action": "Summary"
     },
     {
         "id": 3,
@@ -49,11 +49,11 @@ const chat = [
         "userName": "Ramesh",
         "type": "Chat",
         "dateTime": "21-May-2025 11:05 AM",
-        "status": "Completed",
+        "status": "Cancelled",
         "ratePerMin": 100,
-        "durationMin": 10,
-        "amount": 100,
-        "action": "Summary"
+        "durationMin": "-",
+        "amount": "-",
+        "action": "Reason"
     },
     {
         "id": 4,
@@ -61,11 +61,10 @@ const chat = [
         "userName": "Vignesh",
         "type": "Chat",
         "dateTime": "21-May-2025 11:05 AM",
-        "status": "Cancelled",
+        "status": "Accepted",
         "ratePerMin": 100,
         "durationMin": "-",
         "amount": "-",
-        "action": "Reason"
     }
 ]
 const audio = [
@@ -75,11 +74,11 @@ const audio = [
         "userName": "Sharma",
         "type": "Audio Call",
         "dateTime": "21-May-2025 11:05 AM",
-        "status": "Upcoming",
+        "status": "Completed",
         "ratePerMin": 100,
-        "durationMin": "-",
-        "amount": "-",
-        "action": "Cancel"
+        "durationMin": "10",
+        "amount": "100",
+        "action": "Summary"
     },
     {
         "id": 2,
@@ -87,11 +86,11 @@ const audio = [
         "userName": "Sharma",
         "type": "Audio Call",
         "dateTime": "21-May-2025 11:05 AM",
-        "status": "Upcoming",
+        "status": "Completed",
         "ratePerMin": 100,
-        "durationMin": "-",
-        "amount": "-",
-        "action": "Cancel"
+        "durationMin": "10",
+        "amount": "100",
+        "action": "Summary"
     },
     {
         "id": 3,
@@ -99,11 +98,11 @@ const audio = [
         "userName": "Ramesh",
         "type": "Audio Call",
         "dateTime": "21-May-2025 11:05 AM",
-        "status": "Completed",
+        "status": "Cancelled",
         "ratePerMin": 100,
-        "durationMin": 10,
-        "amount": 100,
-        "action": "Summary"
+        "durationMin": "-",
+        "amount": "-",
+        "action": "Reason"
     },
     {
         "id": 4,
@@ -111,7 +110,7 @@ const audio = [
         "userName": "Vignesh",
         "type": "Audio Call",
         "dateTime": "21-May-2025 11:05 AM",
-        "status": "Cancelled",
+        "status": "Accepted",
         "ratePerMin": 100,
         "durationMin": "-",
         "amount": "-",
@@ -125,11 +124,11 @@ const video = [
         "userName": "Sharma",
         "type": "Video Call",
         "dateTime": "21-May-2025 11:05 AM",
-        "status": "Upcoming",
+        "status": "Completed",
         "ratePerMin": 100,
-        "durationMin": "-",
-        "amount": "-",
-        "action": "Cancel"
+        "durationMin": "10",
+        "amount": "100",
+        "action": "Summary"
     },
     {
         "id": 2,
@@ -137,11 +136,11 @@ const video = [
         "userName": "Sharma",
         "type": "Video Call",
         "dateTime": "21-May-2025 11:05 AM",
-        "status": "Upcoming",
+        "status": "Completed",
         "ratePerMin": 100,
-        "durationMin": "-",
-        "amount": "-",
-        "action": "Cancel"
+        "durationMin": "10",
+        "amount": "100",
+        "action": "Summary"
     },
     {
         "id": 3,
@@ -149,11 +148,11 @@ const video = [
         "userName": "Ramesh",
         "type": "Video Call",
         "dateTime": "21-May-2025 11:05 AM",
-        "status": "Completed",
+        "status": "Cancelled",
         "ratePerMin": 100,
-        "durationMin": 10,
-        "amount": 100,
-        "action": "Summary"
+        "durationMin": "-",
+        "amount": "-",
+        "action": "Reason"
     },
     {
         "id": 4,
@@ -161,11 +160,10 @@ const video = [
         "userName": "Vignesh",
         "type": "Video Call",
         "dateTime": "21-May-2025 11:05 AM",
-        "status": "Cancelled",
+        "status": "Accepted",
         "ratePerMin": 100,
         "durationMin": "-",
         "amount": "-",
-        "action": "Reason"
     }
 ]
 
@@ -175,7 +173,7 @@ const video = [
 
 
 
-const Appointment = () => {
+const CompletedCall = () => {
     const navigate = useNavigate();
     const [showModal, setShowModal] = useState(false);
     const [activeTab, setActiveTab] = useState("chat");
@@ -205,8 +203,8 @@ const Appointment = () => {
         setShowModal(false);
     };
     return (
-        <DashbaordLayout title="Appointment Detail"
-            hedartitle="Appointment Detail"
+        <DashbaordLayout title="Completed Session"
+            hedartitle="Completed Session"
         >
             <ConfirmModal
                 isOpen={showModal}
@@ -280,7 +278,7 @@ const Appointment = () => {
                                         <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.dateTime}</td>
                                         <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0] font-[600]"
                                             style={{
-                                                color: i.status === "Upcoming" ? '#FFC107'
+                                                color: i.status === "Accepted" ? '#FFC107'
                                                     : i.status === "Completed" ? '#008000' : '#FF0000'
                                             }
                                             }
@@ -341,7 +339,7 @@ const Appointment = () => {
                                         <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.dateTime}</td>
                                         <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0] font-[600]"
                                             style={{
-                                                color: i.status === "Upcoming" ? '#FFC107'
+                                                color: i.status === "Accepted" ? '#FFC107'
                                                     : i.status === "Completed" ? '#008000' : '#FF0000'
                                             }
                                             }
@@ -402,7 +400,7 @@ const Appointment = () => {
                                         <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.dateTime}</td>
                                         <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0] font-[600]"
                                             style={{
-                                                color: i.status === "Upcoming" ? '#FFC107'
+                                                color: i.status === "Accepted" ? '#FFC107'
                                                     : i.status === "Completed" ? '#008000' : '#FF0000'
                                             }
                                             }
@@ -441,4 +439,4 @@ const Appointment = () => {
     )
 }
 
-export default Appointment
+export default CompletedCall

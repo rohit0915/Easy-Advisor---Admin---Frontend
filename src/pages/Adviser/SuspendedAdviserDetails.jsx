@@ -24,7 +24,7 @@ import { RechargeWalletModal } from '../../components/Modals/Modal';
 
 
 
-const AdviserDetails = () => {
+const SuspendedAdviserDetails = () => {
     const navigate = useNavigate()
     const [showModal, setShowModal] = useState(false);
 
@@ -163,11 +163,6 @@ const AdviserDetails = () => {
                                 <div className='w-30 h-30 rounded-full'>
                                     <img src={img} alt="" className='w-full h-full rounded-full object-cover' />
                                 </div>
-                                <div className='flex items-center'>
-                                    <MdOutlineStarPurple500 color='#FFB400' size={25} />
-                                    <span className='font-manrope text-[15px] font-[400] text-[#000000] leading-[20px] underline'>4.4Review</span>
-                                </div>
-
                             </div>
 
                             <div className='space-y-1'>
@@ -196,26 +191,9 @@ const AdviserDetails = () => {
                         <div>
                             <h6 className='font-manrope text-[20px] font-[600] text-[#000000] leading-[20px] mb-2'>Available Balance</h6>
                             <h4 className='font-manrope text-[24px] font-[500] text-[#000000] leading-[20px]'>₹45634.0</h4>
-                            <div className='mt-5'>
-                                <h6 className='font-manrope text-[20px] font-[600] text-[#000000] leading-[20px] flex items-center gap-2 mb-4'>
-                                    <MdOutlineCalendarToday color='#000000' size={18} />
-                                    Vacation
-                                </h6>
-                                <div className='flex items-center gap-10'>
-                                    <h6 className='font-manrope text-[15px] font-[600] text-[#000000] leading-[20px] flex flex-col'>
-                                        <span className='font-manrope text-[15px] font-[400] text-[#000000] leading-[20px]'>From</span>
-                                        12-Apr-2024
-                                    </h6>
-                                    <h6 className='font-manrope text-[15px] font-[600] text-[#000000] leading-[20px] flex flex-col'>
-                                        <span className='font-manrope text-[15px] font-[400] text-[#000000] leading-[20px]'>To</span>
-                                        15-Apr-2024
-                                    </h6>
-                                </div>
-                            </div>
                         </div>
-
-                        <button onClick={() => setShowModal(true)} className='px-2.5 py-2.5 rounded-[10px] bg-[linear-gradient(90deg,_rgba(200,45,48,0.7)_1.89%,_rgba(54,38,149,0.7)_67.23%,_rgba(177,47,49,0.7)_136.79%)] font-manrope text-[18px] font-[600] text-[#FFFFFF] leading-[21px] '>
-                            Suspension
+                        <button className='bg-[#164E62] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white'>
+                            De suspension
                         </button>
                     </div>
                 </div>
@@ -685,4 +663,4 @@ const AdviserDetails = () => {
     )
 }
 
-export default AdviserDetails
+export default SuspendedAdviserDetails

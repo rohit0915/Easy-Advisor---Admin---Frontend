@@ -18,6 +18,8 @@ import { MdOutlineAutoStories } from "react-icons/md";
 import { IoIosArrowDown } from "react-icons/io";
 import { FaHourglassHalf, } from "react-icons/fa";
 import { TbUserOff } from "react-icons/tb";
+import { MdOutlineLiveHelp } from "react-icons/md";
+import { MdOutlineLocalActivity } from "react-icons/md";
 
 import img1 from '../../assets/images/LoginLogo.png'
 
@@ -79,37 +81,78 @@ const DashbaordLayout = ({ children, title = "", hedartitle = "", titleAction = 
     {
       name: "Completed",
       icon: IoMdCheckmarkCircleOutline,
-      path: "/dashboard/settings"
+      path: "/completed-calls"
     },
     {
       name: "Earning",
       icon: RiMoneyRupeeCircleLine,
-      path: "/dashboard/support"
+      path: "/earning"
     },
     {
       name: "Blogs",
       icon: TiPen,
-      path: "/logout"
+      path: "/blog"
     },
     {
       name: "Category",
       icon: MdOutlineCategory,
-      path: "/logout"
+      path: "/category",
+      children: [
+        {
+          name: "Category",
+          icon: MdOutlineCategory,
+          path: "/category/list"
+        },
+        {
+          name: "Skills",
+          icon: MdOutlineLiveHelp,
+          path: "/category/skills"
+        },
+      ],
     },
     {
       name: "Team Management",
       icon: BiSupport,
-      path: "/logout"
+      path: "/team-management",
+      children: [
+        {
+          name: "Team List",
+          icon: MdOutlineLocalActivity,
+          path: "/team-management/list"
+        },
+        {
+          name: "Team Role",
+          icon: MdOutlineLiveHelp,
+          path: "/team-management/role"
+        },
+      ],
     },
     {
       name: "Banner Management",
       icon: PiImageSquareBold,
-      path: "/logout"
+      path: "/banner-management"
     },
     {
       name: "Withdrawal",
       icon: BiMoneyWithdraw,
-      path: "/logout"
+      path: "/withdrawal",
+      children: [
+        {
+          name: "Withdrawal Request ",
+          icon: MdOutlineLocalActivity,
+          path: "/withdrawal/request"
+        },
+        {
+          name: "Withdraw Method",
+          icon: MdOutlineLiveHelp,
+          path: "/withdrawal/method"
+        },
+        {
+          name: "Wallet History",
+          icon: MdOutlineLiveHelp,
+          path: "/withdrawal/history"
+        },
+      ],
     },
     {
       name: "Notifications",
@@ -119,7 +162,25 @@ const DashbaordLayout = ({ children, title = "", hedartitle = "", titleAction = 
     {
       name: "Support Management",
       icon: BiSupport,
-      path: "/logout"
+      path: "/support-management",
+      children: [
+        {
+          name: "Ticket",
+          icon: MdOutlineLocalActivity,
+          path: "/support-management/ticket"
+        },
+        {
+          name: "Faq",
+          icon: MdOutlineLiveHelp,
+          path: "/support-management/faq"
+        },
+        {
+          name: "Delete Request",
+          icon: MdOutlineLiveHelp,
+          path: "/support-management/delete-request"
+        },
+      ],
+
     },
     {
       name: "General Setting",

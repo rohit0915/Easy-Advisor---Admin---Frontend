@@ -45,7 +45,7 @@ const users = [
 
 
 
-const PendingRequest = () => {
+const WalletHistory = () => {
     const navigate = useNavigate();
     const [showModal, setShowModal] = useState(false);
 
@@ -54,8 +54,8 @@ const PendingRequest = () => {
         setShowModal(false);
     };
     return (
-        <DashbaordLayout title="Pending Request"
-            hedartitle="Pending Request"
+        <DashbaordLayout title="Wallet History"
+            hedartitle="Wallet History"
         >
             <ConfirmModal
                 isOpen={showModal}
@@ -115,7 +115,7 @@ const PendingRequest = () => {
                                     <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.contact}</td>
                                     <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0] rounded-tl-[8px] rounded-bl-[8px]">
                                         <div className="flex items-center gap-2">
-                                            <button onClick={() => navigate(`/adviser/pending/details/${index + 1}`)} className="font-manrope text-[15px] font-[400] text-[#11968A] flex items-center gap-1">
+                                            <button onClick={() => navigate(`/adviser/list/details/${index + 1}`)} className="font-manrope text-[15px] font-[400] text-[#11968A] flex items-center gap-1">
                                                 <PiEyeBold color='#11968A' size={20} />
                                                 View
                                             </button>
@@ -139,4 +139,4 @@ const PendingRequest = () => {
     )
 }
 
-export default PendingRequest
+export default WalletHistory
