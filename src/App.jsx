@@ -19,9 +19,10 @@ import Skill from './pages/Category/Skill';
 import Teamlist from './pages/Team Management/Teamlist';
 import TeamRole from './pages/Team Management/TeamRole';
 import BannerManagement from './pages/Banner Management';
-import WithdrawRequest from './pages/Withdrawal/withdrawRequest';
 import WithdrawalMethod from './pages/Withdrawal/WithdrawalMethod';
 import WalletHistory from './pages/Withdrawal/WalletHistory';
+import WithdrawRequest from './pages/Withdrawal/WithdrawRequest';
+import EarningDetails from './pages/Earning/EarningDetails';
 
 const Login = lazy(() => import('./pages/Login'));
 
@@ -64,6 +65,7 @@ export default function App() {
           <Route path="/withdrawal/request" element={<WithdrawRequest />} />
           <Route path="/withdrawal/method" element={<WithdrawalMethod />} />
           <Route path="/withdrawal/history" element={<WalletHistory />} />
+          <Route path="/earning/details/:id" element={<EarningDetails />} />
         </Routes>
       </Suspense>
     </Router>

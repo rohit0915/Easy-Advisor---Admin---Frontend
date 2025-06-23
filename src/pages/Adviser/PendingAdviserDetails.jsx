@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import DashbaordLayout from '../../components/DashbaordLayout'
+import { AddRejectReasonModal } from '../../components/Modals/Modal';
 
 
 import { IoArrowBack } from "react-icons/io5";
@@ -14,7 +15,6 @@ import { FaFacebook } from "react-icons/fa";
 
 import img from '../../assets/images/user.png'
 import { useNavigate } from 'react-router-dom';
-import { RechargeWalletModal } from '../../components/Modals/Modal';
 
 
 
@@ -42,8 +42,18 @@ const PendingAdviserDetails = () => {
             titleAction={
                 <IoArrowBack size={25} color='#1C1B1F' className='cursor-pointer' onClick={() => navigate('/adviser/pending')} />
             }
+            headerAction={
+                <div className='flex items-center gap-2'>
+                    <button className='bg-[#164E62] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white'>
+                        Accept
+                    </button>
+                    <button onClick={()=>setShowModal(true)} className='bg-[#9C9C9C] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-[#000000]'>
+                        Reject
+                    </button>
+                </div>
+            }
         >
-            <RechargeWalletModal
+            <AddRejectReasonModal
                 isOpen={showModal}
                 onClose={() => setShowModal(false)}
             />

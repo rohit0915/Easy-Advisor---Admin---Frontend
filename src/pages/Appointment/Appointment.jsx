@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import DashbaordLayout from '../../components/DashbaordLayout'
+import { AddCancelReasonModal, ConfirmModal } from '../../components/Modals/Modal';
 
 import { IoSearch } from "react-icons/io5";
 import { RiDeleteBin6Line } from "react-icons/ri";
@@ -10,11 +11,11 @@ import { MdOutlineNoteAlt } from "react-icons/md";
 import { BiSolidMessageRounded } from "react-icons/bi";
 import { FaPhoneAlt } from "react-icons/fa";
 import { IoVideocam } from "react-icons/io5";
+import { MdOutlineCalendarToday } from "react-icons/md";
 
 
 
 import { useNavigate } from 'react-router-dom';
-import { ConfirmModal } from '../../components/Modals/Modal';
 
 
 
@@ -178,6 +179,7 @@ const video = [
 const Appointment = () => {
     const navigate = useNavigate();
     const [showModal, setShowModal] = useState(false);
+    const [showModal1, setShowModal1] = useState(false);
     const [activeTab, setActiveTab] = useState("chat");
 
     const tabs = [
@@ -207,12 +209,27 @@ const Appointment = () => {
     return (
         <DashbaordLayout title="Appointment Detail"
             hedartitle="Appointment Detail"
+            headerAction={
+                <div className='flex items-center gap-2'>
+                    <button className='bg-[#164E62] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white'>
+                        PDF
+                    </button>
+                    <button className='bg-[#164E62] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white'>
+                        CSV
+                    </button>
+                </div>
+            }
         >
             <ConfirmModal
                 isOpen={showModal}
                 onClose={() => setShowModal(false)}
                 onConfirm={handleConfirm}
                 text="Delete"
+            />
+
+            <AddCancelReasonModal
+                isOpen={showModal1}
+                onClose={() => setShowModal1(false)}
             />
             <div className="mt-5">
                 {/* Tabs */}
@@ -246,10 +263,8 @@ const Appointment = () => {
                     </div>
                     <div className='flex items-center gap-2'>
                         <button className='bg-[#164E62] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white'>
-                            PDF
-                        </button>
-                        <button className='bg-[#164E62] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white'>
-                            CSV
+                            Filter
+                            <MdOutlineCalendarToday />
                         </button>
                     </div>
                 </div>
@@ -297,7 +312,7 @@ const Appointment = () => {
                                                     Summary
                                                 </button>
                                                 : i.action === 'Cancel' ?
-                                                    <button className="font-manrope text-[15px] font-[400] text-[#C23A3A] flex items-center gap-1">
+                                                    <button onClick={()=>setShowModal1(true)} className="font-manrope text-[15px] font-[400] text-[#C23A3A] flex items-center gap-1">
                                                         <RiDeleteBin6Line color='#C23A3A' size={20} />
                                                         Cancel
                                                     </button>
@@ -358,7 +373,7 @@ const Appointment = () => {
                                                     Summary
                                                 </button>
                                                 : i.action === 'Cancel' ?
-                                                    <button className="font-manrope text-[15px] font-[400] text-[#C23A3A] flex items-center gap-1">
+                                                    <button onClick={()=>setShowModal1(true)} className="font-manrope text-[15px] font-[400] text-[#C23A3A] flex items-center gap-1">
                                                         <RiDeleteBin6Line color='#C23A3A' size={20} />
                                                         Cancel
                                                     </button>
@@ -419,7 +434,7 @@ const Appointment = () => {
                                                     Summary
                                                 </button>
                                                 : i.action === 'Cancel' ?
-                                                    <button className="font-manrope text-[15px] font-[400] text-[#C23A3A] flex items-center gap-1">
+                                                    <button onClick={()=>setShowModal1(true)} className="font-manrope text-[15px] font-[400] text-[#C23A3A] flex items-center gap-1">
                                                         <RiDeleteBin6Line color='#C23A3A' size={20} />
                                                         Cancel
                                                     </button>

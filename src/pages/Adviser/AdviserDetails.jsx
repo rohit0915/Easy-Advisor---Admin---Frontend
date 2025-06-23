@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import DashbaordLayout from '../../components/DashbaordLayout'
+import { AddRejectReasonModal, ConfirmModal } from '../../components/Modals/Modal';
 
 
 import { IoArrowBack } from "react-icons/io5";
@@ -18,7 +19,6 @@ import { FiEdit } from "react-icons/fi";
 
 import img from '../../assets/images/user.png'
 import { useNavigate } from 'react-router-dom';
-import { RechargeWalletModal } from '../../components/Modals/Modal';
 
 
 
@@ -27,6 +27,7 @@ import { RechargeWalletModal } from '../../components/Modals/Modal';
 const AdviserDetails = () => {
     const navigate = useNavigate()
     const [showModal, setShowModal] = useState(false);
+    const [showModal1, setShowModal1] = useState(false);
 
     const [activeTab, setActiveTab] = useState("Appointment");
     const [walletactiveTab, setWalletActiveTab] = useState("Wallet Transaction");
@@ -142,6 +143,12 @@ const AdviserDetails = () => {
         }
     ]
 
+    const handleConfirm = () => {
+        console.log("Suspension confirmed!");
+        setShowModal(false);
+        setShowModal1(true)
+    };
+
 
 
     return (
@@ -151,9 +158,15 @@ const AdviserDetails = () => {
                 <IoArrowBack size={25} color='#1C1B1F' className='cursor-pointer' onClick={() => navigate('/adviser/list')} />
             }
         >
-            <RechargeWalletModal
+            <ConfirmModal
                 isOpen={showModal}
                 onClose={() => setShowModal(false)}
+                onConfirm={handleConfirm}
+                text="Suspension"
+            />
+            <AddRejectReasonModal
+                isOpen={showModal1}
+                onClose={() => setShowModal1(false)}
             />
             <div className="mt-5 overflow-x-auto min-h-screen bg-white rounded-[8px] px-6 py-2.5">
                 <div className='flex justify-between flex-wrap mt-2'>

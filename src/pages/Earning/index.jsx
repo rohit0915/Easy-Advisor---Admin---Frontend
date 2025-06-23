@@ -3,13 +3,9 @@ import DashbaordLayout from '../../components/DashbaordLayout'
 
 import { IoSearch } from "react-icons/io5";
 import { PiEyeBold } from "react-icons/pi";
-import { FiEdit } from "react-icons/fi";
-import { RiDeleteBin6Line } from "react-icons/ri";
+import { MdOutlineCalendarToday } from "react-icons/md";
 
 
-import img from '../../assets/images/Adviser1.png'
-import img1 from '../../assets/images/Adviser2.png'
-import img2 from '../../assets/images/Adviser3.png'
 import { useNavigate } from 'react-router-dom';
 import { ConfirmModal } from '../../components/Modals/Modal';
 
@@ -132,6 +128,7 @@ const Earning = () => {
                         </button>
                         <button className='bg-[#164E62] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white'>
                             Filter
+                            <MdOutlineCalendarToday />
                         </button>
                     </div>
                 </div>
@@ -162,7 +159,7 @@ const Earning = () => {
                                     <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.videoEarning}</td>
                                     <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.packageEarning}</td>
                                     <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0] rounded-tl-[8px] rounded-bl-[8px]">
-                                        <button onClick={() => navigate(`/adviser/list/details/${index + 1}`)} className="font-manrope text-[15px] font-[400] text-[#0000FF] flex items-center gap-1">
+                                        <button onClick={() => navigate(`/earning/details/${index + 1}`)} className="font-manrope text-[15px] font-[400] text-[#0000FF] flex items-center gap-1">
                                             <PiEyeBold color='#0000FF' size={20} />
                                             View
                                         </button>

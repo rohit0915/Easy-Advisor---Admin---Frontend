@@ -10,6 +10,7 @@ import img1 from '../../assets/images/blog2.jpg'
 import img2 from '../../assets/images/blog3.png'
 
 import { useNavigate } from 'react-router-dom';
+import { AddBlogModal } from '../../components/Modals/Modal';
 
 
 
@@ -50,6 +51,7 @@ const cardData = [
 
 const Blog = () => {
     const navigate = useNavigate();
+    const [showModal, setShowModal] = useState(false);
     const [toggles, setToggles] = useState(
         cardData.reduce((acc, card) => ({ ...acc, [card.id]: true }), {})
     );
@@ -60,7 +62,20 @@ const Blog = () => {
     return (
         <DashbaordLayout title="Blog"
             hedartitle="Blog"
+            headerAction={
+                <div className='flex items-center gap-2'>
+                    <button onClick={()=>setShowModal(true)} className='bg-[#164E62] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white'>
+                        Add Blog
+                    </button>
+                </div>
+            }
         >
+
+            <AddBlogModal
+                isOpen={showModal}
+                onClose={() => setShowModal(false)}
+            />
+
             <div className="mt-5">
                 <div className='flex items-center justify-between mb-4'>
                     <div className='flex items-center gap-2'>

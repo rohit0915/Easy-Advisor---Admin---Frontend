@@ -7,35 +7,53 @@ import { FiEdit } from "react-icons/fi";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
 
-import img from '../../assets/images/Adviser1.png'
-import img1 from '../../assets/images/Adviser2.png'
-import img2 from '../../assets/images/Adviser3.png'
 import { useNavigate } from 'react-router-dom';
-import { ConfirmModal } from '../../components/Modals/Modal';
+import { AddSkillModal, ConfirmModal } from '../../components/Modals/Modal';
 
 
 
-const users = [
+const skillsData = [
     {
         number: 1,
-        img: img, // make sure img is imported or defined elsewhere
-        name: "Abhishek Sharma",
-        contact: 9874578818,
-        email: 'Abhisheksharma@gmail.com',
+        category: "Node",
     },
     {
         number: 2,
-        img: img1, // make sure img is imported or defined elsewhere
-        name: "Jane Cooper",
-        contact: 987457452,
-        email: 'janecooper@gmail.com',
+        category: "Html",
+
     },
     {
         number: 3,
-        img: img2, // make sure img is imported or defined elsewhere
-        name: "Jenny Wilson",
-        contact: 952524818,
-        email: 'jennywilson@gmail.com',
+        category: "Java",
+
+    },
+    {
+        number: 4,
+        category: "Css",
+    },
+    {
+        number: 5,
+        category: "Spring Boot",
+
+    },
+    {
+        number: 6,
+        category: "Mango DB",
+
+    },
+    {
+        number: 7,
+        category: "Figma",
+    },
+    {
+        number: 8,
+        category: "UX UI",
+
+    },
+    {
+        number: 9,
+        category: "Adobe XD",
+
     },
 ];
 
@@ -48,20 +66,39 @@ const users = [
 const Skill = () => {
     const navigate = useNavigate();
     const [showModal, setShowModal] = useState(false);
+    const [showModal1, setShowModal1] = useState(false);
 
     const handleConfirm = () => {
         console.log("Suspension confirmed!");
         setShowModal(false);
     };
+    const [toggles, setToggles] = useState(
+        skillsData.reduce((acc, category) => ({ ...acc, [category.id]: true }), {})
+    );
+
+    const handleToggle = (id) => {
+        setToggles((prev) => ({ ...prev, [id]: !prev[id] }));
+    };
     return (
         <DashbaordLayout title="Skill"
             hedartitle="Skill"
+            headerAction={
+                <div className='flex items-center gap-2'>
+                    <button onClick={() => setShowModal1(true)} className='bg-[#164E62] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white'>
+                        Add Skill
+                    </button>
+                </div>
+            }
         >
             <ConfirmModal
                 isOpen={showModal}
                 onClose={() => setShowModal(false)}
                 onConfirm={handleConfirm}
                 text="Delete"
+            />
+            <AddSkillModal
+                isOpen={showModal1}
+                onClose={() => setShowModal1(false)}
             />
             <div className="mt-5">
                 <div className='flex items-center justify-between mb-4'>
@@ -92,33 +129,32 @@ const Skill = () => {
                         <thead>
                             <tr className="bg-white text-left font-urbanist text-md font-semibold text-[#0A0E15]">
                                 <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0] rounded-tl-[10px] rounded-bl-[10px]">#</th>
-                                <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Profile</th>
-                                <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Name</th>
-                                <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Email</th>
-                                <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Contact</th>
+                                <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Skill</th>
                                 <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0] rounded-tr-[10px] rounded-br-[10px]">Action</th>
                             </tr>
                         </thead>
                         <tbody className="font-manrope text-[15px] font-[400] text-[#000000]">
-                            {users.map((i, index) => (
-                                <tr key={index} className=" bg-white space-y-10 transition-all">
+                            {skillsData.map((i, index) => (
+                                <tr key={index} className=" bg-white space-y-10 transition-all hover:bg-[#E1F7FF]">
                                     <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0] rounded-tl-[8px] rounded-bl-[8px]">{index + 1}</td>
-                                    <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">
-                                        <img
-                                            src={i.img}
-                                            alt="Profile"
-                                            className="w-10 h-10 rounded-full object-cover"
-                                        />
-                                    </td>
-                                    <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.name}</td>
-                                    <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.email}</td>
-                                    <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.contact}</td>
+                                    <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.category}</td>
                                     <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0] rounded-tl-[8px] rounded-bl-[8px]">
                                         <div className="flex items-center gap-2">
-                                            <button onClick={() => navigate(`/adviser/list/details/${index + 1}`)} className="font-manrope text-[15px] font-[400] text-[#11968A] flex items-center gap-1">
-                                                <PiEyeBold color='#11968A' size={20} />
-                                                View
-                                            </button>
+                                            <div className='flex items-center gap-2'>
+                                                <p className='font-manrope text-[15px] font-[400] text-[#000000]'>50</p>
+                                                <label className="inline-flex items-center cursor-pointer">
+                                                    <input
+                                                        type="checkbox"
+                                                        className="sr-only"
+                                                        checked={toggles[i.number]}
+                                                        onChange={() => handleToggle(i.number)}
+                                                    />
+                                                    <div className={`w-10 h-5 flex items-center bg-gray-300 rounded-full p-1 duration-300 ${toggles[i.number] ? 'bg-green-400' : 'bg-gray-300'}`}>
+                                                        <div className={`bg-white w-4 h-4 rounded-full shadow-md transform duration-300 ${toggles[i.number] ? 'translate-x-4' : ''}`}></div>
+                                                    </div>
+                                                </label>
+                                            </div>
+
                                             <button className="font-manrope text-[15px] font-[400] text-[#273143] flex items-center gap-1">
                                                 <FiEdit color='#273143' size={20} />
                                                 Edit

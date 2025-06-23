@@ -32,7 +32,7 @@ import img1 from '../../assets/images/LoginLogo.png'
  * @param {Object} props - Component props
  * @param {React.ReactNode} props.children - Child components to render in the main content area
  */
-const DashbaordLayout = ({ children, title = "", hedartitle = "", titleAction = null }) => {
+const DashbaordLayout = ({ children, title = "", hedartitle = "", titleAction = null, headerAction=null }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [openSubmenus, setOpenSubmenus] = useState({});
@@ -351,12 +351,18 @@ const DashbaordLayout = ({ children, title = "", hedartitle = "", titleAction = 
         {/* Main Content */}
         <main className="pt-[90px] h-full  px-4 overflow-hidden flex-1">
           <div className="h-full overflow-auto hidescroll">
-            <div className="flex items-center gap-2">
-              {titleAction}
-              <h2 className="font-urbanist text-[18px] font-[600] text-[#0A0E15] whitespace-nowrap">
-                {title}
-              </h2>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                {titleAction}
+                <h2 className="font-urbanist text-[18px] font-[600] text-[#0A0E15] whitespace-nowrap">
+                  {title}
+                </h2>
+              </div>
+              <div className="">
+                {headerAction}
+              </div>
             </div>
+
             {children}
           </div>
         </main>

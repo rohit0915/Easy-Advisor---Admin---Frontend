@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import DashbaordLayout from '../../components/DashbaordLayout'
 
 import { IoSearch } from "react-icons/io5";
-import { PiEyeBold } from "react-icons/pi";
 import { FiEdit } from "react-icons/fi";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
@@ -11,7 +10,7 @@ import img from '../../assets/images/Adviser1.png'
 import img1 from '../../assets/images/Adviser2.png'
 import img2 from '../../assets/images/Adviser3.png'
 import { useNavigate } from 'react-router-dom';
-import { ConfirmModal } from '../../components/Modals/Modal';
+import { AddTesmMemberModal, ConfirmModal } from '../../components/Modals/Modal';
 
 
 
@@ -22,6 +21,7 @@ const users = [
         name: "Abhishek Sharma",
         contact: 9874578818,
         email: 'Abhisheksharma@gmail.com',
+        role: 'Super Admin',
     },
     {
         number: 2,
@@ -29,6 +29,7 @@ const users = [
         name: "Jane Cooper",
         contact: 987457452,
         email: 'janecooper@gmail.com',
+        role: 'Sub Admin',
     },
     {
         number: 3,
@@ -36,6 +37,7 @@ const users = [
         name: "Jenny Wilson",
         contact: 952524818,
         email: 'jennywilson@gmail.com',
+        role: 'Manager',
     },
 ];
 
@@ -48,6 +50,7 @@ const users = [
 const Teamlist = () => {
     const navigate = useNavigate();
     const [showModal, setShowModal] = useState(false);
+    const [showModal1, setShowModal1] = useState(false);
 
     const handleConfirm = () => {
         console.log("Suspension confirmed!");
@@ -56,12 +59,23 @@ const Teamlist = () => {
     return (
         <DashbaordLayout title="Team list"
             hedartitle="Team list"
+            headerAction={
+                <div className='flex items-center gap-2'>
+                    <button onClick={() => setShowModal1(true)} className='bg-[#164E62] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white'>
+                        Add Team member
+                    </button>
+                </div>
+            }
         >
             <ConfirmModal
                 isOpen={showModal}
                 onClose={() => setShowModal(false)}
                 onConfirm={handleConfirm}
                 text="Delete"
+            />
+             <AddTesmMemberModal
+                isOpen={showModal1}
+                onClose={() => setShowModal1(false)}
             />
             <div className="mt-5">
                 <div className='flex items-center justify-between mb-4'>
@@ -96,6 +110,7 @@ const Teamlist = () => {
                                 <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Name</th>
                                 <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Email</th>
                                 <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Contact</th>
+                                <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Team Role</th>
                                 <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0] rounded-tr-[10px] rounded-br-[10px]">Action</th>
                             </tr>
                         </thead>
@@ -113,12 +128,9 @@ const Teamlist = () => {
                                     <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.name}</td>
                                     <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.email}</td>
                                     <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.contact}</td>
+                                    <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.role}</td>
                                     <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0] rounded-tl-[8px] rounded-bl-[8px]">
                                         <div className="flex items-center gap-2">
-                                            <button onClick={() => navigate(`/adviser/list/details/${index + 1}`)} className="font-manrope text-[15px] font-[400] text-[#11968A] flex items-center gap-1">
-                                                <PiEyeBold color='#11968A' size={20} />
-                                                View
-                                            </button>
                                             <button className="font-manrope text-[15px] font-[400] text-[#273143] flex items-center gap-1">
                                                 <FiEdit color='#273143' size={20} />
                                                 Edit

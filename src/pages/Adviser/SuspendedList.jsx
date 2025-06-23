@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import DashbaordLayout from '../../components/DashbaordLayout'
+import {RejectReasonModal } from '../../components/Modals/Modal';
 
 import { IoSearch } from "react-icons/io5";
 import { PiEyeBold } from "react-icons/pi";
@@ -10,7 +11,6 @@ import img from '../../assets/images/Adviser1.png'
 import img1 from '../../assets/images/Adviser2.png'
 import img2 from '../../assets/images/Adviser3.png'
 import { useNavigate } from 'react-router-dom';
-import { ConfirmModal } from '../../components/Modals/Modal';
 
 
 
@@ -48,19 +48,14 @@ const SuspendedList = () => {
     const navigate = useNavigate();
     const [showModal, setShowModal] = useState(false);
 
-    const handleConfirm = () => {
-        console.log("Suspension confirmed!");
-        setShowModal(false);
-    };
+
     return (
         <DashbaordLayout title="Suspended List"
             hedartitle="Suspended List"
         >
-            <ConfirmModal
+            <RejectReasonModal
                 isOpen={showModal}
                 onClose={() => setShowModal(false)}
-                onConfirm={handleConfirm}
-                text="Delete"
             />
             <div className="mt-5">
                 <div className='flex items-center justify-between mb-4'>

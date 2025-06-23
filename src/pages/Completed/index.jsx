@@ -5,6 +5,7 @@ import { IoSearch } from "react-icons/io5";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { MdOutlineSummarize } from "react-icons/md";
 import { MdOutlineNoteAlt } from "react-icons/md";
+import { MdOutlineCalendarToday } from "react-icons/md";
 
 
 import { BiSolidMessageRounded } from "react-icons/bi";
@@ -14,7 +15,7 @@ import { IoVideocam } from "react-icons/io5";
 
 
 import { useNavigate } from 'react-router-dom';
-import { ConfirmModal } from '../../components/Modals/Modal';
+import { ConfirmModal, SummaryModal } from '../../components/Modals/Modal';
 
 
 
@@ -205,12 +206,20 @@ const CompletedCall = () => {
     return (
         <DashbaordLayout title="Completed Session"
             hedartitle="Completed Session"
+            headerAction={
+                <div className='flex items-center gap-2'>
+                    <button className='bg-[#164E62] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white'>
+                        PDF
+                    </button>
+                    <button className='bg-[#164E62] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white'>
+                        CSV
+                    </button>
+                </div>
+            }
         >
-            <ConfirmModal
+            <SummaryModal
                 isOpen={showModal}
                 onClose={() => setShowModal(false)}
-                onConfirm={handleConfirm}
-                text="Delete"
             />
             <div className="mt-5">
                 {/* Tabs */}
@@ -244,10 +253,8 @@ const CompletedCall = () => {
                     </div>
                     <div className='flex items-center gap-2'>
                         <button className='bg-[#164E62] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white'>
-                            PDF
-                        </button>
-                        <button className='bg-[#164E62] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white'>
-                            CSV
+                            Filter
+                            <MdOutlineCalendarToday />
                         </button>
                     </div>
                 </div>
@@ -290,7 +297,7 @@ const CompletedCall = () => {
                                         <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.amount}</td>
                                         <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0] rounded-tl-[8px] rounded-bl-[8px]">
                                             {i.action === 'Summary' ?
-                                                <button className="font-manrope text-[15px] font-[400] text-[#006F29] flex items-center gap-1">
+                                                <button onClick={() => setShowModal(true)} className="font-manrope text-[15px] font-[400] text-[#006F29] flex items-center gap-1">
                                                     <MdOutlineSummarize color='#006F29' size={20} />
                                                     Summary
                                                 </button>
@@ -351,7 +358,7 @@ const CompletedCall = () => {
                                         <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.amount}</td>
                                         <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0] rounded-tl-[8px] rounded-bl-[8px]">
                                             {i.action === 'Summary' ?
-                                                <button className="font-manrope text-[15px] font-[400] text-[#006F29] flex items-center gap-1">
+                                                <button onClick={() => setShowModal(true)} className="font-manrope text-[15px] font-[400] text-[#006F29] flex items-center gap-1">
                                                     <MdOutlineSummarize color='#006F29' size={20} />
                                                     Summary
                                                 </button>
@@ -412,7 +419,7 @@ const CompletedCall = () => {
                                         <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.amount}</td>
                                         <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0] rounded-tl-[8px] rounded-bl-[8px]">
                                             {i.action === 'Summary' ?
-                                                <button className="font-manrope text-[15px] font-[400] text-[#006F29] flex items-center gap-1">
+                                                <button onClick={() => setShowModal(true)} className="font-manrope text-[15px] font-[400] text-[#006F29] flex items-center gap-1">
                                                     <MdOutlineSummarize color='#006F29' size={20} />
                                                     Summary
                                                 </button>

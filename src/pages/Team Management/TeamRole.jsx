@@ -11,31 +11,22 @@ import img from '../../assets/images/Adviser1.png'
 import img1 from '../../assets/images/Adviser2.png'
 import img2 from '../../assets/images/Adviser3.png'
 import { useNavigate } from 'react-router-dom';
-import { ConfirmModal } from '../../components/Modals/Modal';
+import { AddRoleModal, ConfirmModal } from '../../components/Modals/Modal';
 
 
 
 const users = [
     {
         number: 1,
-        img: img, // make sure img is imported or defined elsewhere
-        name: "Abhishek Sharma",
-        contact: 9874578818,
-        email: 'Abhisheksharma@gmail.com',
+        name: "Super Admin",
     },
     {
         number: 2,
-        img: img1, // make sure img is imported or defined elsewhere
-        name: "Jane Cooper",
-        contact: 987457452,
-        email: 'janecooper@gmail.com',
+        name: "Admin",
     },
     {
         number: 3,
-        img: img2, // make sure img is imported or defined elsewhere
-        name: "Jenny Wilson",
-        contact: 952524818,
-        email: 'jennywilson@gmail.com',
+        name: "Manager",
     },
 ];
 
@@ -48,6 +39,8 @@ const users = [
 const TeamRole = () => {
     const navigate = useNavigate();
     const [showModal, setShowModal] = useState(false);
+    const [showModal1, setShowModal1] = useState(false);
+
 
     const handleConfirm = () => {
         console.log("Suspension confirmed!");
@@ -56,12 +49,23 @@ const TeamRole = () => {
     return (
         <DashbaordLayout title="Team Role"
             hedartitle="Team Role"
+            headerAction={
+                <div className='flex items-center gap-2'>
+                    <button onClick={() => setShowModal1(true)} className='bg-[#164E62] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white'>
+                        Add Role
+                    </button>
+                </div>
+            }
         >
             <ConfirmModal
                 isOpen={showModal}
                 onClose={() => setShowModal(false)}
                 onConfirm={handleConfirm}
                 text="Delete"
+            />
+            <AddRoleModal
+                isOpen={showModal1}
+                onClose={() => setShowModal1(false)}
             />
             <div className="mt-5">
                 <div className='flex items-center justify-between mb-4'>
@@ -92,10 +96,7 @@ const TeamRole = () => {
                         <thead>
                             <tr className="bg-white text-left font-urbanist text-md font-semibold text-[#0A0E15]">
                                 <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0] rounded-tl-[10px] rounded-bl-[10px]">#</th>
-                                <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Profile</th>
-                                <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Name</th>
-                                <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Email</th>
-                                <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Contact</th>
+                                <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Role</th>
                                 <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0] rounded-tr-[10px] rounded-br-[10px]">Action</th>
                             </tr>
                         </thead>
@@ -103,22 +104,9 @@ const TeamRole = () => {
                             {users.map((i, index) => (
                                 <tr key={index} className=" bg-white space-y-10 transition-all">
                                     <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0] rounded-tl-[8px] rounded-bl-[8px]">{index + 1}</td>
-                                    <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">
-                                        <img
-                                            src={i.img}
-                                            alt="Profile"
-                                            className="w-10 h-10 rounded-full object-cover"
-                                        />
-                                    </td>
                                     <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.name}</td>
-                                    <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.email}</td>
-                                    <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.contact}</td>
                                     <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0] rounded-tl-[8px] rounded-bl-[8px]">
                                         <div className="flex items-center gap-2">
-                                            <button onClick={() => navigate(`/adviser/list/details/${index + 1}`)} className="font-manrope text-[15px] font-[400] text-[#11968A] flex items-center gap-1">
-                                                <PiEyeBold color='#11968A' size={20} />
-                                                View
-                                            </button>
                                             <button className="font-manrope text-[15px] font-[400] text-[#273143] flex items-center gap-1">
                                                 <FiEdit color='#273143' size={20} />
                                                 Edit

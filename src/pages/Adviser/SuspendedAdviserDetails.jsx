@@ -6,8 +6,6 @@ import { IoArrowBack } from "react-icons/io5";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { IoCallOutline } from "react-icons/io5";
 import { IoLocationOutline } from "react-icons/io5";
-import { MdOutlineStarPurple500 } from "react-icons/md";
-import { MdOutlineCalendarToday } from "react-icons/md";
 import { IoDocumentTextOutline } from "react-icons/io5";
 import { FaLinkedin } from "react-icons/fa";
 import { FaInstagramSquare } from "react-icons/fa";
@@ -15,10 +13,12 @@ import { BsTwitterX } from "react-icons/bs";
 import { FaFacebook } from "react-icons/fa";
 import { PiEyeBold } from "react-icons/pi";
 import { FiEdit } from "react-icons/fi";
+import { GrCircleInformation } from "react-icons/gr";
+
 
 import img from '../../assets/images/user.png'
 import { useNavigate } from 'react-router-dom';
-import { RechargeWalletModal } from '../../components/Modals/Modal';
+import { RechargeWalletModal, RejectReasonModal } from '../../components/Modals/Modal';
 
 
 
@@ -150,8 +150,14 @@ const SuspendedAdviserDetails = () => {
             titleAction={
                 <IoArrowBack size={25} color='#1C1B1F' className='cursor-pointer' onClick={() => navigate('/adviser/list')} />
             }
+            headerAction={
+                <button onClick={() => setShowModal(true)} className="font-manrope text-[15px] font-[400] text-[#C23A3A] flex items-center gap-1">
+                    <GrCircleInformation color='#C23A3A' size={20} />
+                    Reason
+                </button>
+            }
         >
-            <RechargeWalletModal
+            <RejectReasonModal
                 isOpen={showModal}
                 onClose={() => setShowModal(false)}
             />
