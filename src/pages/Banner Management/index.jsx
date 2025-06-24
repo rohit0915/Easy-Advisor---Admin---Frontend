@@ -11,6 +11,7 @@ import img2 from '../../assets/images/blog3.png'
 
 import { useNavigate } from 'react-router-dom';
 import { AddBannerModal } from '../../components/Modals/Modal';
+import { MdOutlineCalendarToday } from "react-icons/md";
 
 
 
@@ -64,7 +65,7 @@ const BannerManagement = () => {
             hedartitle="Banner"
             headerAction={
                 <div className='flex items-center gap-2'>
-                    <button onClick={() => setShowModal1(true)} className='bg-[#164E62] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white'>
+                    <button onClick={() => setShowModal(true)} className='bg-[#164E62] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white'>
                         Add Banner
                     </button>
                 </div>
@@ -96,22 +97,17 @@ const BannerManagement = () => {
                             <div key={card.id} className="bg-white rounded-[8px] p-2.5 overflow-hidden shadow-sm">
                                 <img src={card.image} alt={card.title} className="w-full h-[250px] rounded-tr-[16px] rounded-tl-[16px] object-cover" />
 
-                                <div className="pt-2">
-                                    <div className="flex justify-between font-roboto font-[500] text-[12px] text-[#5C5C5C] leading-[18px] mb-2">
-                                        <span>{card.date}</span>
-                                        <span>{card.readTime}</span>
+                                <div className="pt-2 space-y-3">
+                                    <div className='flex items-center gap-2'>
+                                        <MdOutlineCalendarToday color='#1C1B1F' size={20} />
+                                        <h6 className='font-manrope font-[500] text-[14px] text-[#484848] leading-[20px]'>From October 19, 2025</h6>
                                     </div>
-
-                                    <h2 className="font-roboto font-[500] text-[20px] text-[#1C1B1F] leading-[24px] mb-2">
-                                        {card.title}
-                                    </h2>
-
-                                    <p className="font-roboto font-[500] text-[12px] text-[#1C1B1F] leading-[18px] mb-4 line-clamp-3">
-                                        {card.description}
-                                    </p>
-
+                                    <div className='flex items-center gap-2'>
+                                        <MdOutlineCalendarToday color='#1C1B1F' size={20} />
+                                        <h6 className='font-manrope font-[500] text-[14px] text-[#484848] leading-[20px]'>To October 30, 2025</h6>
+                                    </div>
                                     <div className="flex justify-between items-center text-sm">
-                                        <button className="font-manrope font-[400] text-[14px] text-[#484848] leading-[20px] flex items-center gap-1">
+                                        <button className="font-roboto font-[500] text-[14px] text-[#5C5C5C] leading-[18px] flex items-center gap-1">
                                             <FiEdit /> Edit
                                         </button>
 

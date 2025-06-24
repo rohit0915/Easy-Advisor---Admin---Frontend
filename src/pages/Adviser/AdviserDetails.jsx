@@ -176,11 +176,10 @@ const AdviserDetails = () => {
                                 <div className='w-30 h-30 rounded-full'>
                                     <img src={img} alt="" className='w-full h-full rounded-full object-cover' />
                                 </div>
-                                <div className='flex items-center'>
+                                <div className='flex items-center cursor-pointer' onClick={()=>navigate('/adviser/list/details/:id/review')}>
                                     <MdOutlineStarPurple500 color='#FFB400' size={25} />
                                     <span className='font-manrope text-[15px] font-[400] text-[#000000] leading-[20px] underline'>4.4Review</span>
                                 </div>
-
                             </div>
 
                             <div className='space-y-1'>

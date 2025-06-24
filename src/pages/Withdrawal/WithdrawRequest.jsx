@@ -2,9 +2,7 @@ import React, { useState } from 'react'
 import DashbaordLayout from '../../components/DashbaordLayout'
 
 import { IoSearch } from "react-icons/io5";
-import { PiEyeBold } from "react-icons/pi";
-import { FiEdit } from "react-icons/fi";
-import { RiDeleteBin6Line } from "react-icons/ri";
+import { FaCheck } from "react-icons/fa6";
 
 
 import img from '../../assets/images/Adviser1.png'
@@ -18,24 +16,35 @@ import { ConfirmModal } from '../../components/Modals/Modal';
 const users = [
     {
         number: 1,
-        img: img, // make sure img is imported or defined elsewhere
+        img: img,
         name: "Abhishek Sharma",
-        contact: 9874578818,
-        email: 'Abhisheksharma@gmail.com',
+        amount: 60.00,
+        requesteddate: '21-May-2025 11.05 AM',
+        paymentmethod: 'Upi',
+        detail: 'UPI:9834982@paytm',
+        status: 'Pending',
+        action: 'Release',
     },
     {
         number: 2,
-        img: img1, // make sure img is imported or defined elsewhere
+        img: img1,
         name: "Jane Cooper",
-        contact: 987457452,
-        email: 'janecooper@gmail.com',
+        amount: 60.00,
+        requesteddate: '21-May-2025 11.05 AM',
+        paymentmethod: 'Upi',
+        detail: 'UPI:9834982@paytm',
+        status: 'Pending',
+        action: 'Release',
     },
     {
         number: 3,
-        img: img2, // make sure img is imported or defined elsewhere
+        img: img2,
         name: "Jenny Wilson",
-        contact: 952524818,
-        email: 'jennywilson@gmail.com',
+        amount: 60.00,
+        requesteddate: '21-May-2025 11.05 AM',
+        paymentmethod: 'Upi',
+        detail: 'UPI:9834982@paytm',
+        status: 'Pending',
     },
 ];
 
@@ -56,6 +65,16 @@ const WithdrawRequest = () => {
     return (
         <DashbaordLayout title="withdraw Request"
             hedartitle="withdraw Request"
+            headerAction={
+                <div className='flex items-center gap-2'>
+                    <button className='bg-[#164E62] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white'>
+                        PDF
+                    </button>
+                    <button className='bg-[#164E62] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white'>
+                        CSV
+                    </button>
+                </div>
+            }
         >
             <ConfirmModal
                 isOpen={showModal}
@@ -78,14 +97,7 @@ const WithdrawRequest = () => {
                             Search
                         </button>
                     </div>
-                    <div className='flex items-center gap-2'>
-                        <button className='bg-[#164E62] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white'>
-                            PDF
-                        </button>
-                        <button className='bg-[#164E62] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white'>
-                            CSV
-                        </button>
-                    </div>
+
                 </div>
                 <div className='overflow-x-auto min-h-screen'>
                     <table className="min-w-full border-collapse">
@@ -94,14 +106,17 @@ const WithdrawRequest = () => {
                                 <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0] rounded-tl-[10px] rounded-bl-[10px]">#</th>
                                 <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Profile</th>
                                 <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Name</th>
-                                <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Email</th>
-                                <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Contact</th>
+                                <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Amount</th>
+                                <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Requested Date</th>
+                                <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Payment Method</th>
+                                <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Detail</th>
+                                <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Status</th>
                                 <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0] rounded-tr-[10px] rounded-br-[10px]">Action</th>
                             </tr>
                         </thead>
                         <tbody className="font-manrope text-[15px] font-[400] text-[#000000]">
                             {users.map((i, index) => (
-                                <tr key={index} className=" bg-white space-y-10 transition-all">
+                                <tr key={index} className=" bg-white space-y-10 transition-all cursor-pointer hover:bg-[#E1F7FF]" onClick={()=>navigate('/adviser/list/details/1')}>
                                     <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0] rounded-tl-[8px] rounded-bl-[8px]">{index + 1}</td>
                                     <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">
                                         <img
@@ -111,22 +126,19 @@ const WithdrawRequest = () => {
                                         />
                                     </td>
                                     <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.name}</td>
-                                    <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.email}</td>
-                                    <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.contact}</td>
+                                    <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.amount}</td>
+                                    <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.requesteddate}</td>
+                                    <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.paymentmethod}</td>
+                                    <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.detail}</td>
+                                    <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.status}</td>
                                     <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0] rounded-tl-[8px] rounded-bl-[8px]">
                                         <div className="flex items-center gap-2">
-                                            <button onClick={() => navigate(`/adviser/list/details/${index + 1}`)} className="font-manrope text-[15px] font-[400] text-[#11968A] flex items-center gap-1">
-                                                <PiEyeBold color='#11968A' size={20} />
-                                                View
-                                            </button>
-                                            <button className="font-manrope text-[15px] font-[400] text-[#273143] flex items-center gap-1">
-                                                <FiEdit color='#273143' size={20} />
-                                                Edit
-                                            </button>
-                                            <button onClick={() => setShowModal(true)} className="font-manrope text-[15px] font-[400] text-[#C23A3A] flex items-center gap-1">
-                                                <RiDeleteBin6Line color='#C23A3A' size={20} />
-                                                Delete
-                                            </button>
+                                            {i.action &&
+                                                <button onClick={() => navigate(`/adviser/list/details/${index + 1}`)} className="font-manrope underline text-[15px] font-[400] text-[#008000] flex items-center gap-1">
+                                                    <FaCheck color='#008000' size={20} />
+                                                    {i.action}
+                                                </button>
+                                            }
                                         </div>
                                     </td>
                                 </tr>

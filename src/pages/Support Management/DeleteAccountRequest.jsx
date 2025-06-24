@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import DashbaordLayout from '../../components/DashbaordLayout'
 
 import { IoSearch } from "react-icons/io5";
-
+import { FaCheck } from "react-icons/fa6";
 
 
 import img from '../../assets/images/Adviser1.png'
@@ -18,28 +18,31 @@ const users = [
         number: 1,
         img: img,
         name: "Abhishek Sharma",
-        amount: 60.00,
+        role: 'User',
+        number: '6847839417',
+        email: 'email@gmail.com',
         requesteddate: '21-May-2025 11.05 AM',
-        paymentmethod: 'Razor pay',
-        status: 'Pending',
+        action: 'Approve',
     },
     {
         number: 2,
         img: img1,
         name: "Jane Cooper",
-        amount: 60.00,
+        role: 'Adviser',
+        number: '6847839417',
+        email: 'email@gmail.com',
         requesteddate: '21-May-2025 11.05 AM',
-        paymentmethod: 'Upi',
-        status: 'Failed',
+        action: 'Approved',
     },
     {
         number: 3,
         img: img2,
         name: "Jenny Wilson",
-        amount: 60.00,
+        role: 'User',
+        number: '6847839417',
+        email: 'email@gmail.com',
         requesteddate: '21-May-2025 11.05 AM',
-        paymentmethod: 'Bank Transfer',
-        status: 'Success',
+        action: 'Approved',
     },
 ];
 
@@ -49,7 +52,7 @@ const users = [
 
 
 
-const WalletHistory = () => {
+const DeleteAccountRequest = () => {
     const navigate = useNavigate();
     const [showModal, setShowModal] = useState(false);
 
@@ -58,18 +61,8 @@ const WalletHistory = () => {
         setShowModal(false);
     };
     return (
-        <DashbaordLayout title="Wallet History"
-            hedartitle="Wallet History"
-            headerAction={
-                <div className='flex items-center gap-2'>
-                    <button className='bg-[#164E62] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white'>
-                        PDF
-                    </button>
-                    <button className='bg-[#164E62] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white'>
-                        CSV
-                    </button>
-                </div>
-            }
+        <DashbaordLayout title="Delete Account request"
+            hedartitle={`Support Management ${'>'} Delete Account request`}
         >
             <ConfirmModal
                 isOpen={showModal}
@@ -92,6 +85,7 @@ const WalletHistory = () => {
                             Search
                         </button>
                     </div>
+
                 </div>
                 <div className='overflow-x-auto min-h-screen'>
                     <table className="min-w-full border-collapse">
@@ -100,15 +94,16 @@ const WalletHistory = () => {
                                 <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0] rounded-tl-[10px] rounded-bl-[10px]">#</th>
                                 <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Profile</th>
                                 <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Name</th>
-                                <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Amount</th>
-                                <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Date</th>
-                                <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Payment Method</th>
-                                <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0] rounded-tr-[10px] rounded-br-[10px]">Status</th>
+                                <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Role</th>
+                                <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Number</th>
+                                <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Email</th>
+                                <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Requested Date</th>
+                                <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0] rounded-tr-[10px] rounded-br-[10px]">Action</th>
                             </tr>
                         </thead>
                         <tbody className="font-manrope text-[15px] font-[400] text-[#000000]">
                             {users.map((i, index) => (
-                                <tr key={index} className=" bg-white space-y-10 transition-all">
+                                <tr key={index} className=" bg-white space-y-10 transition-all cursor-pointer hover:bg-[#E1F7FF]" onClick={() => navigate('/adviser/list/details/1')}>
                                     <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0] rounded-tl-[8px] rounded-bl-[8px]">{index + 1}</td>
                                     <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">
                                         <img
@@ -118,19 +113,24 @@ const WalletHistory = () => {
                                         />
                                     </td>
                                     <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.name}</td>
-                                    <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.amount}</td>
+                                    <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.role}</td>
+                                    <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.number}</td>
+                                    <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.email}</td>
                                     <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.requesteddate}</td>
-                                    <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.paymentmethod}</td>
-                                    <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]"
-                                        style={{
-                                            color: i.status === "Pending" ? '#FFA500'
-                                                : i.status === "Success" ? '#008000' : '#FF0000'
-                                        }
-                                        }
-                                    >
-                                        {i.status}
+                                    <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0] rounded-tl-[8px] rounded-bl-[8px]">
+                                        <div className="flex items-center gap-2">
+                                            {i.action === "Approve" ?
+                                                <button onClick={() => setShowModal(true)} className="font-manrope text-[15px] font-[400] text-[#11968A] flex items-center gap-1">
+                                                    <FaCheck color='#11968A' size={20} />
+                                                    Approve
+                                                </button>
+                                                :
+                                                <button className="font-manrope text-[15px] font-[400] text-[#000000] flex items-center gap-1">
+                                                    Approved
+                                                </button>
+                                            }
+                                        </div>
                                     </td>
-
                                 </tr>
                             ))}
                         </tbody>
@@ -141,4 +141,4 @@ const WalletHistory = () => {
     )
 }
 
-export default WalletHistory
+export default DeleteAccountRequest

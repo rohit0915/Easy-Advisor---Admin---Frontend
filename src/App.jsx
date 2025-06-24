@@ -23,6 +23,13 @@ import WithdrawalMethod from './pages/Withdrawal/WithdrawalMethod';
 import WalletHistory from './pages/Withdrawal/WalletHistory';
 import WithdrawRequest from './pages/Withdrawal/WithdrawRequest';
 import EarningDetails from './pages/Earning/EarningDetails';
+import Notification from './pages/Notification';
+import Tickets from './pages/Support Management/Tickets';
+import FAQ from './pages/Support Management/FAQ';
+import DeleteAccountRequest from './pages/Support Management/DeleteAccountRequest';
+import GeneralSetting from './pages/General Setting';
+import PageManagement from './pages/Page Management';
+import Reviewlist from './pages/Adviser/Reviewlist';
 
 const Login = lazy(() => import('./pages/Login'));
 
@@ -52,6 +59,7 @@ export default function App() {
           <Route path="/appointment" element={<Appointment />} />
           <Route path="/users/details/:id" element={<UserDetails />} />
           <Route path="/adviser/list/details/:id" element={<AdviserDetails />} />
+          <Route path="/adviser/list/details/:id/review" element={<Reviewlist />} />
           <Route path="/adviser/pending/details/:id" element={<PendingAdviserDetails />} />
           <Route path="/adviser/suspended/details/:id" element={<SuspendedAdviserDetails />} />
           <Route path="/completed-calls" element={<CompletedCall />} />
@@ -66,6 +74,12 @@ export default function App() {
           <Route path="/withdrawal/method" element={<WithdrawalMethod />} />
           <Route path="/withdrawal/history" element={<WalletHistory />} />
           <Route path="/earning/details/:id" element={<EarningDetails />} />
+          <Route path="/notification" element={<Notification />} />
+          <Route path="/support-management/ticket" element={<Tickets />} />
+          <Route path="/support-management/faq" element={<FAQ />} />
+          <Route path="/support-management/delete-request" element={<DeleteAccountRequest />} />
+          <Route path="/general-setting" element={<GeneralSetting />} />
+          <Route path="/page-management" element={<PageManagement />} />
         </Routes>
       </Suspense>
     </Router>

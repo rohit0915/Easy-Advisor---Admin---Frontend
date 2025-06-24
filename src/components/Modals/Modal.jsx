@@ -901,7 +901,101 @@ const AddBannerModal = ({ isOpen, onClose, onSubmit }) => {
             <div className="bg-white rounded-xl w-full max-w-2xl p-6 relative shadow-lg">
                 {/* Close Button */}
                 <div className="flex items-center justify-between mb-3">
-                    <h2 className="font-manrope text-[16px] font-bold text-[#000000]">Add Role</h2>
+                    <h2 className="font-manrope text-[16px] font-bold text-[#000000]">Add Banner</h2>
+                    <IoMdCloseCircleOutline
+                        color="#C12D34"
+                        size={25}
+                        className="cursor-pointer"
+                        onClick={onClose}
+                    />
+                </div>
+
+                {/* Form Fields */}
+                <div className="mb-4 space-y-4">
+                    {/* Title */}
+                    <div className="flex items-center gap-2">
+                        <div className="w-full">
+                            <label htmlFor="title" className="block font-manrope text-[14px] font-semibold text-[#000000] mb-1">
+                                From
+                            </label>
+                            <input
+                                type="date"
+                                id="title"
+                                placeholder="Enter Role Name"
+                                className="w-full px-4 py-2 border rounded-lg"
+                            />
+                        </div>
+                        <div className="w-full">
+                            <label htmlFor="title" className="block font-manrope text-[14px] font-semibold text-[#000000] mb-1">
+                                To
+                            </label>
+                            <input
+                                type="date"
+                                id="title"
+                                placeholder="Enter Role Name"
+                                className="w-full px-4 py-2 border rounded-lg"
+                            />
+                        </div>
+                    </div>
+
+                    <div>
+                        <label htmlFor="featureImage" className="block font-manrope text-[14px] font-semibold text-[#000000] mb-1">
+                            Feature Image
+                        </label>
+                        <div className="w-full px-4 py-2 border rounded-lg flex items-center justify-end">
+                            <button
+                                type="button"
+                                className="bg-[#175CD3] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white"
+                            >
+                                Select
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+                {/* Buttons */}
+                <div className="flex justify-center gap-3 mt-4">
+                    <button
+                        onClick={handleClear}
+                        className="px-5 py-1 rounded-[4px] bg-[#EBEFF4] border border-[#E5EBF1] font-urbanist text-[14px] font-semibold text-[#64748B]"
+                    >
+                        Cancel
+                    </button>
+                    <button
+                        onClick={handleAddMoney}
+                        className="bg-[#164E62] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white"
+                    >
+                        Save
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+
+const ShareNotificationModal = ({ isOpen, onClose, onSubmit }) => {
+    const [reply, setReply] = useState("");
+
+
+    if (!isOpen) return null;
+
+    const handleClear = () => {
+        onClose()
+    };
+
+    const handleAddMoney = () => {
+        // onSubmit(amount);
+        onClose();
+    };
+
+    return (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80">
+            <div className="bg-white rounded-xl w-full max-w-2xl p-6 relative shadow-lg">
+                {/* Close Button */}
+                <div className="flex items-center justify-between mb-3">
+                    <h2 className="font-manrope text-[16px] font-bold text-[#000000]">Share Notification</h2>
                     <IoMdCloseCircleOutline
                         color="#C12D34"
                         size={25}
@@ -915,30 +1009,32 @@ const AddBannerModal = ({ isOpen, onClose, onSubmit }) => {
                     {/* Title */}
                     <div>
                         <label htmlFor="title" className="block font-manrope text-[14px] font-semibold text-[#000000] mb-1">
-                            Role Name
+                            Notification
                         </label>
                         <input
                             type="text"
                             id="title"
-                            placeholder="Enter Role Name"
+                            defaultValue="Welcome Note"
+                            placeholder="Enter Name"
                             className="w-full px-4 py-2 border rounded-lg"
                         />
                     </div>
-
+                    {/* Category */}
                     <div>
-                        <label htmlFor="title" className="block font-manrope text-[14px] font-semibold text-[#000000] mb-1">
-                            Allow Edit Access To
+                        <label htmlFor="category" className="block font-manrope text-[14px] font-semibold text-[#000000] mb-1">
+                            To
                         </label>
                         <select id="category" className="w-full px-4 py-2 border rounded-lg">
-                            <option>Select</option>
+                            <option>Eg: Both</option>
                         </select>
                     </div>
+
                     <div>
-                        <label htmlFor="title" className="block font-manrope text-[14px] font-semibold text-[#000000] mb-1">
-                            Allow View Access To
+                        <label htmlFor="category" className="block font-manrope text-[14px] font-semibold text-[#000000] mb-1">
+                            Name
                         </label>
                         <select id="category" className="w-full px-4 py-2 border rounded-lg">
-                            <option>Select</option>
+                            <option>Select Name</option>
                         </select>
                     </div>
                 </div>
@@ -963,7 +1059,513 @@ const AddBannerModal = ({ isOpen, onClose, onSubmit }) => {
     );
 }
 
+const AddNotificationModal = ({ isOpen, onClose, onSubmit }) => {
+    const [reply, setReply] = useState("");
 
+
+    if (!isOpen) return null;
+
+    const handleClear = () => {
+        onClose()
+    };
+
+    const handleAddMoney = () => {
+        // onSubmit(amount);
+        onClose();
+    };
+
+    return (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80">
+            <div className="bg-white rounded-xl w-full max-w-2xl p-6 relative shadow-lg">
+                {/* Close Button */}
+                <div className="flex items-center justify-between mb-3">
+                    <h2 className="font-manrope text-[16px] font-bold text-[#000000]">Notification</h2>
+                    <IoMdCloseCircleOutline
+                        color="#C12D34"
+                        size={25}
+                        className="cursor-pointer"
+                        onClick={onClose}
+                    />
+                </div>
+
+                {/* Form Fields */}
+                <div className="mb-4 space-y-4">
+                    {/* Title */}
+                    <div>
+                        <label htmlFor="title" className="block font-manrope text-[14px] font-semibold text-[#000000] mb-1">
+                            Title*
+                        </label>
+                        <input
+                            type="text"
+                            id="title"
+                            defaultValue="Terms And Codition"
+                            placeholder="Enter Name"
+                            className="w-full px-4 py-2 border rounded-lg"
+                        />
+                    </div>
+                    <div className="mt-6">
+                        <label className="block font-manrope text-[14px] font-semibold text-[#000000] mb-1">Content*</label>
+                        <textarea
+                            rows={6}
+                            className="w-full px-4 py-2 border rounded-lg"
+                            placeholder="Enter your content here..."
+                        ></textarea>
+                    </div>
+                </div>
+
+                {/* Buttons */}
+                <div className="flex justify-center gap-3 mt-4">
+                    <button
+                        onClick={handleClear}
+                        className="px-5 py-1 rounded-[4px] bg-[#EBEFF4] border border-[#E5EBF1] font-urbanist text-[14px] font-semibold text-[#64748B]"
+                    >
+                        Cancel
+                    </button>
+                    <button
+                        onClick={handleAddMoney}
+                        className="bg-[#164E62] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white"
+                    >
+                        Save
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+const AddTicketModal = ({ isOpen, onClose, onSubmit }) => {
+    const [reply, setReply] = useState("");
+
+
+    if (!isOpen) return null;
+
+    const handleClear = () => {
+        onClose()
+    };
+
+    const handleAddMoney = () => {
+        // onSubmit(amount);
+        onClose();
+    };
+
+    return (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80">
+            <div className="bg-white rounded-xl w-full max-w-2xl p-6 relative shadow-lg">
+                {/* Close Button */}
+                <div className="flex items-center justify-between mb-3">
+                    <h2 className="font-manrope text-[16px] font-bold text-[#000000]">Add Ticket</h2>
+                    <IoMdCloseCircleOutline
+                        color="#C12D34"
+                        size={25}
+                        className="cursor-pointer"
+                        onClick={onClose}
+                    />
+                </div>
+
+                {/* Form Fields */}
+                <div className="mb-4 space-y-4">
+                    {/* Title */}
+                    <div>
+                        <label htmlFor="title" className="block font-manrope text-[14px] font-semibold text-[#000000] mb-1">
+                            Question
+                        </label>
+                        <input
+                            type="text"
+                            id="title"
+                            defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra condimentum eget purus in. Consectetur eget id morbi amet amet, in. Ipsum viverra pretium tellus neque. Ullamcorper suspendisse aenean leo pharetra in sit semper et. Amet quam placerat sem."
+                            placeholder="Enter Name"
+                            className="w-full px-4 py-2 border rounded-lg"
+                        />
+                    </div>
+                    <div className="mt-6">
+                        <label className="block font-manrope text-[14px] font-semibold text-[#000000] mb-1">Reply</label>
+                        <textarea
+                            rows={6}
+                            className="w-full px-4 py-2 border rounded-lg"
+                            placeholder="Enter your content here..."
+                        ></textarea>
+                    </div>
+                </div>
+
+                {/* Buttons */}
+                <div className="flex justify-center gap-3 mt-4">
+                    <button
+                        onClick={handleClear}
+                        className="px-5 py-1 rounded-[4px] bg-[#EBEFF4] border border-[#E5EBF1] font-urbanist text-[14px] font-semibold text-[#64748B]"
+                    >
+                        Cancel
+                    </button>
+                    <button
+                        onClick={handleAddMoney}
+                        className="bg-[#164E62] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white"
+                    >
+                        Save & Close
+                    </button>
+                    <button
+                        onClick={handleAddMoney}
+                        className="bg-[#164E62] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white"
+                    >
+                        Save
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+const EditTicketModal = ({ isOpen, onClose, onSubmit }) => {
+    const [reply, setReply] = useState("");
+
+
+    if (!isOpen) return null;
+
+    const handleClear = () => {
+        onClose()
+    };
+
+    const handleAddMoney = () => {
+        // onSubmit(amount);
+        onClose();
+    };
+
+    return (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80">
+            <div className="bg-white rounded-xl w-full max-w-2xl p-6 relative shadow-lg">
+                {/* Close Button */}
+                <div className="flex items-center justify-between mb-3">
+                    <h2 className="font-manrope text-[16px] font-bold text-[#000000]">Edit Ticket</h2>
+                    <IoMdCloseCircleOutline
+                        color="#C12D34"
+                        size={25}
+                        className="cursor-pointer"
+                        onClick={onClose}
+                    />
+                </div>
+
+                {/* Form Fields */}
+                <div className="mb-4 space-y-4">
+                    {/* Title */}
+                    <div>
+                        <label htmlFor="title" className="block font-manrope text-[14px] font-semibold text-[#000000] mb-1">
+                            Question
+                        </label>
+                        <textarea
+                            type="text"
+                            id="title"
+                            defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra condimentum eget purus in. Consectetur eget id morbi amet amet, in. Ipsum viverra pretium tellus neque. Ullamcorper suspendisse aenean leo pharetra in sit semper et. Amet quam placerat sem."
+                            placeholder="Enter Name"
+                            className="w-full px-4 py-2 border rounded-lg"
+                            rows={4}
+                        ></textarea>
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <div className="w-full">
+                            <label htmlFor="title" className="block font-manrope text-[14px] font-semibold text-[#000000] mb-1">
+                                Date
+                            </label>
+                            <input
+                                type="date"
+                                id="title"
+                                placeholder="Enter Role Name"
+                                className="w-full px-4 py-2 border rounded-lg"
+                            />
+                        </div>
+                        <div className="w-full">
+                            <label htmlFor="title" className="block font-manrope text-[14px] font-semibold text-[#000000] mb-1">
+                                Posted By
+                            </label>
+                            <input
+                                type="date"
+                                id="title"
+                                placeholder="Enter Role Name"
+                                className="w-full px-4 py-2 border rounded-lg"
+                            />
+                        </div>
+                    </div>
+                    <div className="mt-6">
+                        <label className="block font-manrope text-[14px] font-semibold text-[#000000] mb-1">Reply</label>
+                        <textarea
+                            rows={6}
+                            className="w-full px-4 py-2 border rounded-lg"
+                            placeholder="Enter your content here..."
+                        ></textarea>
+                    </div>
+                </div>
+
+                {/* Buttons */}
+                <div className="flex justify-center gap-3 mt-4">
+                    <button
+                        onClick={handleAddMoney}
+                        className="bg-[#164E62] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white"
+                    >
+                        Change to Open
+                    </button>
+                    <button
+                        onClick={handleClear}
+                        className="px-5 py-1 rounded-[4px] bg-[#EBEFF4] border border-[#E5EBF1] font-urbanist text-[14px] font-semibold text-[#64748B]"
+                    >
+                        Clear
+                    </button>
+                    <button
+                        onClick={handleAddMoney}
+                        className="bg-[#164E62] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white"
+                    >
+                        Save
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+const ViewTicketModal = ({ isOpen, onClose, onSubmit }) => {
+    const [reply, setReply] = useState("");
+
+
+    if (!isOpen) return null;
+
+    const handleClear = () => {
+        onClose()
+    };
+
+    const handleAddMoney = () => {
+        // onSubmit(amount);
+        onClose();
+    };
+
+    return (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80">
+            <div className="bg-white rounded-xl w-full max-w-2xl p-6 relative shadow-lg">
+                {/* Close Button */}
+                <div className="flex items-center justify-between mb-3">
+                    <h2 className="font-manrope text-[16px] font-bold text-[#000000]">Ticket</h2>
+                    <IoMdCloseCircleOutline
+                        color="#C12D34"
+                        size={25}
+                        className="cursor-pointer"
+                        onClick={onClose}
+                    />
+                </div>
+
+                {/* Form Fields */}
+                <div className="mb-4 space-y-4">
+                    {/* Title */}
+                    <div>
+                        <label htmlFor="title" className="block font-manrope text-[14px] font-semibold text-[#000000] mb-1">
+                            Question
+                        </label>
+                        <textarea
+                            type="text"
+                            id="title"
+                            defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra condimentum eget purus in. Consectetur eget id morbi amet amet, in. Ipsum viverra pretium tellus neque. Ullamcorper suspendisse aenean leo pharetra in sit semper et. Amet quam placerat sem."
+                            placeholder="Enter Name"
+                            className="w-full px-4 py-2 border rounded-lg"
+                            rows={4}
+                        ></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+const AddFAQReplyModal = ({ isOpen, onClose, onSubmit }) => {
+    const [reply, setReply] = useState("");
+
+
+    if (!isOpen) return null;
+
+    const handleClear = () => {
+        onClose()
+    };
+
+    const handleAddMoney = () => {
+        // onSubmit(amount);
+        onClose();
+    };
+
+    return (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80">
+            <div className="bg-white rounded-xl w-full max-w-2xl p-6 relative shadow-lg">
+                {/* Close Button */}
+                <div className="flex items-center justify-between mb-3">
+                    <h2 className="font-manrope text-[16px] font-bold text-[#000000]">Add FAQ Reply</h2>
+                    <IoMdCloseCircleOutline
+                        color="#C12D34"
+                        size={25}
+                        className="cursor-pointer"
+                        onClick={onClose}
+                    />
+                </div>
+
+                {/* Form Fields */}
+                <div className="mb-4 space-y-4">
+                    {/* Title */}
+                    <div>
+                        <label htmlFor="title" className="block font-manrope text-[14px] font-semibold text-[#000000] mb-1">
+                            Question
+                        </label>
+                        <textarea
+                            type="text"
+                            id="title"
+                            defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra condimentum eget purus in. Consectetur eget id morbi amet amet, in. Ipsum viverra pretium tellus neque. Ullamcorper suspendisse aenean leo pharetra in sit semper et. Amet quam placerat sem."
+                            placeholder="Enter Name"
+                            className="w-full px-4 py-2 border rounded-lg"
+                            rows={4}
+                        ></textarea>
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <div className="w-full">
+                            <label htmlFor="title" className="block font-manrope text-[14px] font-semibold text-[#000000] mb-1">
+                                Date
+                            </label>
+                            <input
+                                type="date"
+                                id="title"
+                                placeholder="Enter Role Name"
+                                className="w-full px-4 py-2 border rounded-lg"
+                            />
+                        </div>
+                        <div className="w-full">
+                            <label htmlFor="title" className="block font-manrope text-[14px] font-semibold text-[#000000] mb-1">
+                                Posted By
+                            </label>
+                            <input
+                                type="date"
+                                id="title"
+                                placeholder="Enter Role Name"
+                                className="w-full px-4 py-2 border rounded-lg"
+                            />
+                        </div>
+                    </div>
+                    <div className="mt-6">
+                        <label className="block font-manrope text-[14px] font-semibold text-[#000000] mb-1">Reply</label>
+                        <textarea
+                            rows={6}
+                            className="w-full px-4 py-2 border rounded-lg"
+                            placeholder="Enter your content here..."
+                        ></textarea>
+                    </div>
+                </div>
+
+                {/* Buttons */}
+                <div className="flex justify-center gap-3 mt-4">
+                    <button
+                        onClick={handleClear}
+                        className="px-5 py-1 rounded-[4px] bg-[#EBEFF4] border border-[#E5EBF1] font-urbanist text-[14px] font-semibold text-[#64748B]"
+                    >
+                        Clear
+                    </button>
+                    <button
+                        onClick={handleAddMoney}
+                        className="bg-[#164E62] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white"
+                    >
+                        Save
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+
+const AddPageManagementModal = ({ isOpen, onClose, onSubmit }) => {
+    const [reply, setReply] = useState("");
+
+
+    if (!isOpen) return null;
+
+    const handleClear = () => {
+        onClose()
+    };
+
+    const handleAddMoney = () => {
+        // onSubmit(amount);
+        onClose();
+    };
+
+    return (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80">
+            <div className="bg-white rounded-xl w-full max-w-2xl p-6 relative shadow-lg">
+                {/* Close Button */}
+                <div className="flex items-center justify-between mb-3">
+                    <h2 className="font-manrope text-[16px] font-bold text-[#000000]">Add Page Management</h2>
+                    <IoMdCloseCircleOutline
+                        color="#C12D34"
+                        size={25}
+                        className="cursor-pointer"
+                        onClick={onClose}
+                    />
+                </div>
+
+                {/* Form Fields */}
+                <div className="mb-4 space-y-4">
+                    {/* Title */}
+                    <div>
+                        <label htmlFor="title" className="block font-manrope text-[14px] font-semibold text-[#000000] mb-1">
+                            Title
+                        </label>
+                        <input
+                            type="text"
+                            id="title"
+                            defaultValue="Terms And Codition"
+                            placeholder="Enter Name"
+                            className="w-full px-4 py-2 border rounded-lg"
+                        />
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <div className="w-full">
+                            <label htmlFor="title" className="block font-manrope text-[14px] font-semibold text-[#000000] mb-1">
+                                Date
+                            </label>
+                            <input
+                                type="date"
+                                id="title"
+                                placeholder="Enter Role Name"
+                                className="w-full px-4 py-2 border rounded-lg"
+                            />
+                        </div>
+                        <div className="w-full">
+                            <label htmlFor="title" className="block font-manrope text-[14px] font-semibold text-[#000000] mb-1">
+                                Posted By
+                            </label>
+                            <input
+                                type="date"
+                                id="title"
+                                placeholder="Enter Role Name"
+                                className="w-full px-4 py-2 border rounded-lg"
+                            />
+                        </div>
+                    </div>
+                    <div className="mt-6">
+                        <label className="block font-manrope text-[14px] font-semibold text-[#000000] mb-1">Content</label>
+                        <textarea
+                            rows={6}
+                            className="w-full px-4 py-2 border rounded-lg"
+                            placeholder="Enter your content here..."
+                        ></textarea>
+                    </div>
+                </div>
+
+                {/* Buttons */}
+                <div className="flex justify-center gap-3 mt-4">
+                    <button
+                        onClick={handleClear}
+                        className="px-5 py-1 rounded-[4px] bg-[#EBEFF4] border border-[#E5EBF1] font-urbanist text-[14px] font-semibold text-[#64748B]"
+                    >
+                        Clear
+                    </button>
+                    <button
+                        onClick={handleAddMoney}
+                        className="bg-[#164E62] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white"
+                    >
+                        Save
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
+}
 
 
 
@@ -982,5 +1584,12 @@ export {
     AddSkillModal,
     AddTesmMemberModal,
     AddRoleModal,
-    AddBannerModal
+    AddBannerModal,
+    ShareNotificationModal,
+    AddNotificationModal,
+    AddTicketModal,
+    EditTicketModal,
+    ViewTicketModal,
+    AddFAQReplyModal,
+    AddPageManagementModal
 }

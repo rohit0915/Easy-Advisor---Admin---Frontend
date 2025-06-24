@@ -1,15 +1,11 @@
 import React, { useState } from 'react'
 import DashbaordLayout from '../../components/DashbaordLayout'
 
-import { IoSearch } from "react-icons/io5";
-import { PiEyeBold } from "react-icons/pi";
+
 import { FiEdit } from "react-icons/fi";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
 
-import img from '../../assets/images/Adviser1.png'
-import img1 from '../../assets/images/Adviser2.png'
-import img2 from '../../assets/images/Adviser3.png'
 import { useNavigate } from 'react-router-dom';
 import { AddCategoryModal, AddSubCategoryModal, ConfirmModal } from '../../components/Modals/Modal';
 

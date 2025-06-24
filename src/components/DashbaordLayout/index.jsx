@@ -32,7 +32,7 @@ import img1 from '../../assets/images/LoginLogo.png'
  * @param {Object} props - Component props
  * @param {React.ReactNode} props.children - Child components to render in the main content area
  */
-const DashbaordLayout = ({ children, title = "", hedartitle = "", titleAction = null, headerAction=null }) => {
+const DashbaordLayout = ({ children, title = "", hedartitle = "", titleAction = null, headerAction = null }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [openSubmenus, setOpenSubmenus] = useState({});
@@ -157,7 +157,7 @@ const DashbaordLayout = ({ children, title = "", hedartitle = "", titleAction = 
     {
       name: "Notifications",
       icon: MdNotificationsNone,
-      path: "/logout"
+      path: "/notification"
     },
     {
       name: "Support Management",
@@ -185,12 +185,12 @@ const DashbaordLayout = ({ children, title = "", hedartitle = "", titleAction = 
     {
       name: "General Setting",
       icon: MdOutlineBuild,
-      path: "/logout"
+      path: "/general-setting"
     },
     {
       name: "Page Management",
       icon: MdOutlineAutoStories,
-      path: "/logout"
+      path: "/page-management"
     },
   ];
 
