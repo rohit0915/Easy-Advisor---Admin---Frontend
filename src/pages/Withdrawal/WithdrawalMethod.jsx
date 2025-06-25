@@ -56,8 +56,8 @@ const WithdrawalMethod = () => {
                 onConfirm={handleConfirm}
                 text="Delete"
             />
-            <div className="mt-5">
-                <div className='overflow-x-auto min-h-screen'>
+            <div className="sm:mt-5 mt-2">
+                <div className='overflow-x-auto'>
                     <table className="min-w-full border-collapse">
                         <thead>
                             <tr className="bg-white text-left font-urbanist text-md font-semibold text-[#0A0E15]">
@@ -69,7 +69,7 @@ const WithdrawalMethod = () => {
                         </thead>
                         <tbody className="font-manrope text-[15px] font-[400] text-[#000000]">
                             {methods.map((i, index) => (
-                                <tr key={index} className=" bg-white space-y-10 transition-all">
+                                <tr key={index} className=" bg-white space-y-10 transition-all hover:bg-[#E1F7FF]">
                                     <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0] rounded-tl-[8px] rounded-bl-[8px]">{index + 1}</td>
                                     <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.methodname}</td>
                                     <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">

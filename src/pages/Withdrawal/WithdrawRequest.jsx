@@ -82,10 +82,10 @@ const WithdrawRequest = () => {
                 onConfirm={handleConfirm}
                 text="Delete"
             />
-            <div className="mt-5">
-                <div className='flex items-center justify-between mb-4'>
-                    <div className='flex items-center gap-2'>
-                        <div className='bg-white py-2 px-5 flex items-center justify-between rounded-[8px]'>
+            <div className="sm:mt-5 mt-2">
+                <div className='flex items-center justify-between mb-4 flex-wrap gap-2'>
+                    <div className='flex items-center gap-2 flex-wrap'>
+                        <div className='bg-white py-2 px-5 flex items-center justify-between rounded-[8px] w-full sm:w-min'>
                             <input
                                 type="text"
                                 placeholder='Search....'
@@ -99,7 +99,7 @@ const WithdrawRequest = () => {
                     </div>
 
                 </div>
-                <div className='overflow-x-auto min-h-screen'>
+                <div className='overflow-x-auto'>
                     <table className="min-w-full border-collapse">
                         <thead>
                             <tr className="bg-white text-left font-urbanist text-md font-semibold text-[#0A0E15]">

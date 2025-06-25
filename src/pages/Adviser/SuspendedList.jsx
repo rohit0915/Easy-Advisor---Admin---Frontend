@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import DashbaordLayout from '../../components/DashbaordLayout'
-import {RejectReasonModal } from '../../components/Modals/Modal';
+import { RejectReasonModal } from '../../components/Modals/Modal';
 
 import { IoSearch } from "react-icons/io5";
 import { PiEyeBold } from "react-icons/pi";
@@ -57,10 +57,10 @@ const SuspendedList = () => {
                 isOpen={showModal}
                 onClose={() => setShowModal(false)}
             />
-            <div className="mt-5">
-                <div className='flex items-center justify-between mb-4'>
-                    <div className='flex items-center gap-2'>
-                        <div className='bg-white py-2 px-5 flex items-center justify-between rounded-[8px]'>
+            <div className="sm:mt-5 mt-2">
+                <div className='flex items-center justify-between mb-4 flex-wrap gap-2'>
+                    <div className='flex items-center gap-2 flex-wrap'>
+                        <div className='bg-white py-2 px-5 flex items-center justify-between rounded-[8px] w-full sm:w-min'>
                             <input
                                 type="text"
                                 placeholder='Search....'
@@ -71,8 +71,14 @@ const SuspendedList = () => {
                         <button className='bg-[#164E62] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white'>
                             Search
                         </button>
+                        <button className='sm:hidden bg-[#164E62] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white'>
+                            PDF
+                        </button>
+                        <button className='sm:hidden bg-[#164E62] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white'>
+                            CSV
+                        </button>
                     </div>
-                    <div className='flex items-center gap-2'>
+                    <div className='sm:flex items-center gap-2 hidden'>
                         <button className='bg-[#164E62] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white'>
                             PDF
                         </button>
@@ -81,7 +87,7 @@ const SuspendedList = () => {
                         </button>
                     </div>
                 </div>
-                <div className='overflow-x-auto min-h-screen'>
+                <div className='overflow-x-auto'>
                     <table className="min-w-full border-collapse">
                         <thead>
                             <tr className="bg-white text-left font-urbanist text-md font-semibold text-[#0A0E15]">
@@ -93,9 +99,9 @@ const SuspendedList = () => {
                                 <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0] rounded-tr-[10px] rounded-br-[10px]">Action</th>
                             </tr>
                         </thead>
-                        <tbody className="font-manrope text-[15px] font-[400] text-[#000000]">
+                        <tbody className="font-manrope text-[15px] font-[400] text-[#000000] ">
                             {users.map((i, index) => (
-                                <tr key={index} className=" bg-white space-y-10 transition-all">
+                                <tr key={index} className=" bg-white space-y-10 transition-all hover:bg-[#E1F7FF]">
                                     <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0] rounded-tl-[8px] rounded-bl-[8px]">{index + 1}</td>
                                     <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">
                                         <img
@@ -114,7 +120,7 @@ const SuspendedList = () => {
                                                 View
                                             </button>
                                             <button onClick={() => setShowModal(true)} className="font-manrope text-[15px] font-[400] text-[#C23A3A] flex items-center gap-1">
-                                                <GrCircleInformation  color='#C23A3A' size={20} />
+                                                <GrCircleInformation color='#C23A3A' size={20} />
                                                 Reason
                                             </button>
                                         </div>

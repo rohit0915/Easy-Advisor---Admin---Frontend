@@ -77,10 +77,10 @@ const WalletHistory = () => {
                 onConfirm={handleConfirm}
                 text="Delete"
             />
-            <div className="mt-5">
-                <div className='flex items-center justify-between mb-4'>
-                    <div className='flex items-center gap-2'>
-                        <div className='bg-white py-2 px-5 flex items-center justify-between rounded-[8px]'>
+            <div className="sm:mt-5 mt-2">
+                <div className='flex items-center justify-between mb-4 flex-wrap gap-2'>
+                    <div className='flex items-center gap-2 flex-wrap'>
+                        <div className='bg-white py-2 px-5 flex items-center justify-between rounded-[8px] w-full sm:w-min'>
                             <input
                                 type="text"
                                 placeholder='Search....'
@@ -108,7 +108,7 @@ const WalletHistory = () => {
                         </thead>
                         <tbody className="font-manrope text-[15px] font-[400] text-[#000000]">
                             {users.map((i, index) => (
-                                <tr key={index} className=" bg-white space-y-10 transition-all">
+                                <tr key={index} className=" bg-white space-y-10 transition-all hover:bg-[#E1F7FF]">
                                     <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0] rounded-tl-[8px] rounded-bl-[8px]">{index + 1}</td>
                                     <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">
                                         <img

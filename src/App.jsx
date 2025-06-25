@@ -30,6 +30,8 @@ import DeleteAccountRequest from './pages/Support Management/DeleteAccountReques
 import GeneralSetting from './pages/General Setting';
 import PageManagement from './pages/Page Management';
 import Reviewlist from './pages/Adviser/Reviewlist';
+import Subscriberlist from './pages/Adviser/SubscriberList';
+import PackageEarning from './pages/Earning/PackageEarning';
 
 const Login = lazy(() => import('./pages/Login'));
 
@@ -80,6 +82,8 @@ export default function App() {
           <Route path="/support-management/delete-request" element={<DeleteAccountRequest />} />
           <Route path="/general-setting" element={<GeneralSetting />} />
           <Route path="/page-management" element={<PageManagement />} />
+          <Route path="/adviser/list/details/:id/subscriber-list" element={<Subscriberlist />} />
+          <Route path="/package-earning" element={<PackageEarning />} />
         </Routes>
       </Suspense>
     </Router>

@@ -33,6 +33,7 @@ import img from '../../assets/images/Adviser1.png'
 import img1 from '../../assets/images/Adviser2.png'
 import img2 from '../../assets/images/Adviser3.png'
 import img3 from '../../assets/images/Adviser4.png'
+import { Link } from 'react-router-dom';
 
 
 
@@ -95,42 +96,50 @@ const stats = [
     {
         label: "Total User",
         value: 360,
-        icon: <FaRegUser className="text-[#C6E55E]" />
+        icon: <FaRegUser className="text-[#C6E55E]" />,
+        link: '/users'
     },
     {
         label: "Total Adviser",
         value: 120,
-        icon: <LiaChalkboardTeacherSolid className="text-[#4986ED]" />
+        icon: <LiaChalkboardTeacherSolid className="text-[#4986ED]" />,
+        link: '/adviser/list'
     },
     {
         label: "Withdraw Request",
         value: 120,
-        icon: <BsCreditCard className="text-[#AD2FE6]" />
+        icon: <BsCreditCard className="text-[#AD2FE6]" />,
+        link: '/withdrawal/request'
     },
     {
         label: "Pending Request",
         value: 50,
-        icon: <FaHourglassHalf className="text-[#FFC107]" />
+        icon: <FaHourglassHalf className="text-[#FFC107]" />,
+        link: '/adviser/pending'
     },
     {
         label: "Total Completed Session",
         value: 360,
-        icon: <IoMdCheckmarkCircleOutline className="text-[#FEDA7D]" />
+        icon: <IoMdCheckmarkCircleOutline className="text-[#FEDA7D]" />,
+        link: '/completed-calls'
     },
     {
         label: "Appointment",
         value: 120,
-        icon: <FaPhoneAlt className="text-[#38E894]" />
+        icon: <FaPhoneAlt className="text-[#38E894]" />,
+        link: '/appointment'
     },
     {
         label: "Total Earning",
         value: 360,
-        icon: <RiMoneyRupeeCircleLine className="text-[#C6E55E]" />
+        icon: <RiMoneyRupeeCircleLine className="text-[#C6E55E]" />,
+        link: '/earning'
     },
     {
         label: "Package",
         value: 120,
-        icon: <GoPackage className="text-[#AD2FE6]" />
+        icon: <GoPackage className="text-[#AD2FE6]" />,
+        link: '/package-earning'
     },
 ];
 const categories = [
@@ -269,16 +278,18 @@ const Dashboard = () => {
             <div className='mb-5'>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-5">
                     {stats.map((item, index) => (
-                        <div
-                            key={index}
-                            className="bg-white shadow-md rounded-[8px] px-4 py-3 flex flex-col items-start cursor-pointer"
-                        >
-                            <div className="text-2xl mb-1">{item.icon}</div>
-                            <div>
-                                <h2 className="font-manrope text-lg sm:text-[24px] font-bold text-[#000000] m-0 mb-00.5">{item.value}</h2>
-                                <p className="font-manrope text-sm font-[400] text-[#000000] m-0">{item.label}</p>
+                        <Link to={`${item.link}`}>
+                            <div
+                                key={index}
+                                className="bg-white shadow-md rounded-[8px] px-4 py-3 flex flex-col items-start cursor-pointer"
+                            >
+                                <div className="text-2xl mb-1">{item.icon}</div>
+                                <div>
+                                    <h2 className="font-manrope text-lg sm:text-[24px] font-bold text-[#000000] m-0 mb-00.5">{item.value}</h2>
+                                    <p className="font-manrope text-sm font-[400] text-[#000000] m-0">{item.label}</p>
+                                </div>
                             </div>
-                        </div>
+                        </Link>
                     ))}
                 </div>
                 <div className="space-y-5 mb-5">
@@ -388,7 +399,7 @@ const Dashboard = () => {
                             </thead>
                             <tbody className="font-manrope text-[15px] font-[400] text-[#000000]">
                                 {categories.map((i, index) => (
-                                    <tr key={index} className="bg-white space-y-10 transition-all">
+                                    <tr key={index} className="bg-white space-y-10 transition-all hover:bg-[#E1F7FF]">
                                         <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">
                                             <div className={`w-5 h-5 rounded-full ${i.color}`}></div>
                                         </td>
@@ -429,7 +440,7 @@ const Dashboard = () => {
                             </thead>
                             <tbody className="font-manrope text-[15px] font-[400] text-[#000000]">
                                 {adviser.map((i, index) => (
-                                    <tr key={index} className=" bg-white space-y-10 transition-all">
+                                    <tr key={index} className=" bg-white space-y-10 transition-all hover:bg-[#E1F7FF]">
                                         <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{index + 1}</td>
                                         <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">
                                             <img

@@ -3,9 +3,6 @@ import DashbaordLayout from '../../components/DashbaordLayout'
 import { AddCancelReasonModal, ConfirmModal } from '../../components/Modals/Modal';
 
 import { IoSearch } from "react-icons/io5";
-import { RiDeleteBin6Line } from "react-icons/ri";
-import { MdOutlineSummarize } from "react-icons/md";
-import { MdOutlineNoteAlt } from "react-icons/md";
 import { IoArrowBack } from "react-icons/io5";
 
 
@@ -301,6 +298,15 @@ const EarningDetails = () => {
     const [showModal1, setShowModal1] = useState(false);
     const [activeTab, setActiveTab] = useState("chat");
 
+    const tabLabels = {
+        chat: "Chat",
+        audio: "Audio",
+        video: "Video",
+        package: "Package",
+    };
+    const activeTabLabel = tabLabels[activeTab] || "";
+
+
     const tabs = [
         {
             key: "chat",
@@ -333,7 +339,7 @@ const EarningDetails = () => {
     };
     return (
         <DashbaordLayout title="Total Earning"
-            hedartitle="Chat Earning"
+            hedartitle={`Earning > ${activeTabLabel} Earning`}
             titleAction={
                 <IoArrowBack size={25} color='#1C1B1F' className='cursor-pointer' onClick={() => navigate('/adviser/list')} />
             }

@@ -100,10 +100,10 @@ const Skill = () => {
                 isOpen={showModal1}
                 onClose={() => setShowModal1(false)}
             />
-            <div className="mt-5">
-                <div className='flex items-center justify-between mb-4'>
-                    <div className='flex items-center gap-2'>
-                        <div className='bg-white py-2 px-5 flex items-center justify-between rounded-[8px]'>
+            <div className="sm:mt-5 mt-2">
+                <div className='flex items-center justify-between mb-4 flex-wrap'>
+                    <div className='flex items-center gap-2 flex-wrap'>
+                        <div className='bg-white py-2 px-5 flex items-center justify-between rounded-[8px] w-full sm:w-min'>
                             <input
                                 type="text"
                                 placeholder='Search....'
@@ -114,8 +114,14 @@ const Skill = () => {
                         <button className='bg-[#164E62] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white'>
                             Search
                         </button>
+                        <button className='sm:hidden bg-[#164E62] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white'>
+                            PDF
+                        </button>
+                        <button className='sm:hidden bg-[#164E62] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white'>
+                            CSV
+                        </button>
                     </div>
-                    <div className='flex items-center gap-2'>
+                    <div className='sm:flex items-center gap-2 hidden'>
                         <button className='bg-[#164E62] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white'>
                             PDF
                         </button>

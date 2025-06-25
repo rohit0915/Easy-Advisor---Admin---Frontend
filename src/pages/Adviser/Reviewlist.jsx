@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import DashbaordLayout from '../../components/DashbaordLayout'
-import {ConfirmModal } from '../../components/Modals/Modal';
+import { ConfirmModal, ReviewModal } from '../../components/Modals/Modal';
 
 
 import { IoArrowBack } from "react-icons/io5";
 import { IoSearch } from "react-icons/io5";
 import { PiEyeBold } from "react-icons/pi";
-import { FiEdit } from "react-icons/fi";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { MdOutlineStarPurple500 } from "react-icons/md";
 
 
 import img from '../../assets/images/Adviser1.png'
@@ -21,22 +21,28 @@ const users = [
         number: 1,
         img: img, // make sure img is imported or defined elsewhere
         name: "Abhishek Sharma",
-        contact: 9874578818,
-        email: 'Abhisheksharma@gmail.com',
+        date: '21-May-2025 11.05 AM',
+        type: 'Chat',
+        duration: '70 min',
+        rating: '4',
     },
     {
         number: 2,
         img: img1, // make sure img is imported or defined elsewhere
         name: "Jane Cooper",
-        contact: 987457452,
-        email: 'janecooper@gmail.com',
+        date: '21-May-2025 11.05 AM',
+        type: 'Video',
+        duration: '70 min',
+        rating: '4',
     },
     {
         number: 3,
         img: img2, // make sure img is imported or defined elsewhere
         name: "Jenny Wilson",
-        contact: 952524818,
-        email: 'jennywilson@gmail.com',
+        date: '21-May-2025 11.05 AM',
+        type: 'Audio',
+        duration: '70 min',
+        rating: '5',
     },
 ];
 
@@ -45,34 +51,39 @@ const users = [
 const Reviewlist = () => {
     const navigate = useNavigate()
     const [showModal, setShowModal] = useState(false);
+    const [showModal1, setShowModal1] = useState(false);
 
 
     const handleConfirm = () => {
         console.log("Suspension confirmed!");
         setShowModal(false);
-        setShowModal1(true)
     };
 
 
 
     return (
         <DashbaordLayout title="Review list"
-            hedartitle="Review list"
+            hedartitle={`Adviser Profile ${'>'} Review`}
             titleAction={
-                <IoArrowBack size={25} color='#1C1B1F' className='cursor-pointer' onClick={() => navigate('/adviser/list')} />
+                <IoArrowBack size={25} color='#1C1B1F' className='cursor-pointer' onClick={() => navigate(-1)} />
             }
         >
             <ConfirmModal
                 isOpen={showModal}
                 onClose={() => setShowModal(false)}
                 onConfirm={handleConfirm}
-                text="Suspension"
+                text="Delete"
             />
 
-            <div className="mt-5">
-                <div className='flex items-center justify-between mb-4'>
-                    <div className='flex items-center gap-2'>
-                        <div className='bg-white py-2 px-5 flex items-center justify-between rounded-[8px]'>
+            <ReviewModal
+                isOpen={showModal1}
+                onClose={() => setShowModal1(false)}
+            />
+
+            <div className="sm:mt-5 mt-2">
+                <div className='flex items-center justify-between mb-4 flex-wrap gap-2'>
+                    <div className='flex items-center gap-2 flex-wrap'>
+                        <div className='bg-white py-2 px-5 flex items-center justify-between rounded-[8px] w-full sm:w-min'>
                             <input
                                 type="text"
                                 placeholder='Search....'
@@ -83,8 +94,14 @@ const Reviewlist = () => {
                         <button className='bg-[#164E62] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white'>
                             Search
                         </button>
+                        <button className='sm:hidden bg-[#164E62] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white'>
+                            PDF
+                        </button>
+                        <button className='sm:hidden bg-[#164E62] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white'>
+                            CSV
+                        </button>
                     </div>
-                    <div className='flex items-center gap-2'>
+                    <div className='sm:flex items-center gap-2 hidden'>
                         <button className='bg-[#164E62] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white'>
                             PDF
                         </button>
@@ -93,21 +110,23 @@ const Reviewlist = () => {
                         </button>
                     </div>
                 </div>
-                <div className='overflow-x-auto min-h-screen'>
+                <div className='overflow-x-auto'>
                     <table className="min-w-full border-collapse">
                         <thead>
                             <tr className="bg-white text-left font-urbanist text-md font-semibold text-[#0A0E15]">
                                 <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0] rounded-tl-[10px] rounded-bl-[10px]">#</th>
                                 <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Profile</th>
-                                <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Name</th>
-                                <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Email</th>
-                                <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Contact</th>
+                                <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">User Name</th>
+                                <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Date & Time</th>
+                                <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Type</th>
+                                <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Duration</th>
+                                <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">Rating</th>
                                 <th className="px-6 py-2.5 border-b-10 border-[#E2E8F0] rounded-tr-[10px] rounded-br-[10px]">Action</th>
                             </tr>
                         </thead>
                         <tbody className="font-manrope text-[15px] font-[400] text-[#000000]">
                             {users.map((i, index) => (
-                                <tr key={index} className=" bg-white space-y-10 transition-all">
+                                <tr key={index} className=" bg-white space-y-10 transition-all hover:bg-[#E1F7FF]">
                                     <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0] rounded-tl-[8px] rounded-bl-[8px]">{index + 1}</td>
                                     <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">
                                         <img
@@ -117,17 +136,22 @@ const Reviewlist = () => {
                                         />
                                     </td>
                                     <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.name}</td>
-                                    <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.email}</td>
-                                    <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.contact}</td>
+                                    <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.date}</td>
+                                    <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.type}</td>
+                                    <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">{i.duration}</td>
                                     <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0] rounded-tl-[8px] rounded-bl-[8px]">
                                         <div className="flex items-center gap-2">
-                                            <button onClick={() => navigate(`/adviser/list/details/${index + 1}`)} className="font-manrope text-[15px] font-[400] text-[#11968A] flex items-center gap-1">
-                                                <PiEyeBold color='#11968A' size={20} />
-                                                View
+                                            <button className="font-manrope text-[15px] font-[400] text-[#000000] flex items-center gap-1">
+                                                {i.rating}
+                                                <MdOutlineStarPurple500 color='#FFB400' size={20} />
                                             </button>
-                                            <button className="font-manrope text-[15px] font-[400] text-[#273143] flex items-center gap-1">
-                                                <FiEdit color='#273143' size={20} />
-                                                Edit
+                                        </div>
+                                    </td>
+                                    <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0] rounded-tl-[8px] rounded-bl-[8px]">
+                                        <div className="flex items-center gap-2">
+                                            <button onClick={() => setShowModal1(true)} className="font-manrope text-[15px] font-[400] text-[#0000FF] flex items-center gap-1">
+                                                <PiEyeBold color='#0000FF' size={20} />
+                                                Review
                                             </button>
                                             <button onClick={() => setShowModal(true)} className="font-manrope text-[15px] font-[400] text-[#C23A3A] flex items-center gap-1">
                                                 <RiDeleteBin6Line color='#C23A3A' size={20} />

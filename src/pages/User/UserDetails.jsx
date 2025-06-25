@@ -148,7 +148,7 @@ const UserDetails = () => {
 
     return (
         <DashbaordLayout title="Customer  Details"
-            hedartitle="User Profile"
+            hedartitle={`User ${'>'} User Profile`}
             titleAction={
                 <IoArrowBack size={25} color='#1C1B1F' className='cursor-pointer' onClick={() => navigate('/users')} />
             }

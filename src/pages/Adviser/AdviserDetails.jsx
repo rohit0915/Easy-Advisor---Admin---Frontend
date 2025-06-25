@@ -153,7 +153,7 @@ const AdviserDetails = () => {
 
     return (
         <DashbaordLayout title="Adviser Details"
-            hedartitle="Adviser Profile"
+            hedartitle={`Adviser ${'>'} Adviser Profile`}
             titleAction={
                 <IoArrowBack size={25} color='#1C1B1F' className='cursor-pointer' onClick={() => navigate('/adviser/list')} />
             }
@@ -579,7 +579,7 @@ const AdviserDetails = () => {
                                             <td className="p-3 font-manrope text-[15px] font-[400] text-[#000000] leading-[20px]">{item.dateTime}</td>
                                             <td className="p-3 font-manrope text-[15px] font-[400] text-[#000000] leading-[20px]">{item.price}</td>
                                             <td className="p-3 font-manrope text-[15px] font-[400] text-[#000000] leading-[20px]">
-                                                <button className="font-manrope text-[15px] font-[400] text-[#11968A] flex items-center gap-1">
+                                                <button onClick={()=>navigate('/adviser/list/details/:id/subscriber-list')} className="font-manrope text-[15px] font-[400] text-[#11968A] flex items-center gap-1">
                                                     <PiEyeBold color='#11968A' size={20} />
                                                     View
                                                 </button>

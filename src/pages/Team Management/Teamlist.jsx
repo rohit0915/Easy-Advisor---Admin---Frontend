@@ -73,13 +73,13 @@ const Teamlist = () => {
                 onConfirm={handleConfirm}
                 text="Delete"
             />
-             <AddTesmMemberModal
+            <AddTesmMemberModal
                 isOpen={showModal1}
                 onClose={() => setShowModal1(false)}
             />
-            <div className="mt-5">
-                <div className='flex items-center justify-between mb-4'>
-                    <div className='flex items-center gap-2'>
+            <div className="sm:mt-5 mt-2">
+                <div className='flex items-center justify-between mb-4 flex-wrap gap-2'>
+                    <div className='flex items-center gap-2 flex-wrap'>
                         <div className='bg-white py-2 px-5 flex items-center justify-between rounded-[8px]'>
                             <input
                                 type="text"
@@ -91,8 +91,14 @@ const Teamlist = () => {
                         <button className='bg-[#164E62] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white'>
                             Search
                         </button>
+                        <button className='sm:hidden bg-[#164E62] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white'>
+                            PDF
+                        </button>
+                        <button className='sm:hidden bg-[#164E62] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white'>
+                            CSV
+                        </button>
                     </div>
-                    <div className='flex items-center gap-2'>
+                    <div className='sm:flex items-center gap-2 hidden'>
                         <button className='bg-[#164E62] flex items-center gap-2 shadow-2xl px-5 py-2 rounded-[4px] font-urbanist text-sm font-semibold text-white'>
                             PDF
                         </button>
@@ -101,7 +107,7 @@ const Teamlist = () => {
                         </button>
                     </div>
                 </div>
-                <div className='overflow-x-auto min-h-screen'>
+                <div className='overflow-x-auto'>
                     <table className="min-w-full border-collapse">
                         <thead>
                             <tr className="bg-white text-left font-urbanist text-md font-semibold text-[#0A0E15]">
@@ -116,7 +122,7 @@ const Teamlist = () => {
                         </thead>
                         <tbody className="font-manrope text-[15px] font-[400] text-[#000000]">
                             {users.map((i, index) => (
-                                <tr key={index} className=" bg-white space-y-10 transition-all">
+                                <tr key={index} className=" bg-white space-y-10 transition-all hover:bg-[#E1F7FF]">
                                     <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0] rounded-tl-[8px] rounded-bl-[8px]">{index + 1}</td>
                                     <td className="px-6 py-2.5 border-b-10 border-[#E2E8F0]">
                                         <img

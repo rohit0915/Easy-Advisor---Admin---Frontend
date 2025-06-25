@@ -143,9 +143,9 @@ const Category = () => {
                 isOpen={showModal2}
                 onClose={() => setShowModal2(false)}
             />
-            <div className="mt-5">
-                <div className='overflow-x-auto min-h-screen'>
-                    <div className='flex gap-2'>
+            <div className="sm:mt-5 mt-2">
+                <div className='overflow-x-auto'>
+                    <div className='sm:flex gap-2 block'>
                         <div className='w-full'>
                             <table className="min-w-full border-collapse">
                                 <thead>

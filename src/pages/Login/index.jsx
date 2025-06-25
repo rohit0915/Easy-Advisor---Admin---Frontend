@@ -23,7 +23,7 @@ const Login = () => {
             Welcome Back
           </h6>
 
-          <form className="space-y-5" action={handleLogin}>
+          <form className="space-y-5">
             <div>
               <label className="block font-open-sans font-normal text-[14px] text-secondary mb-1">
                 User Name
@@ -57,7 +57,7 @@ const Login = () => {
             </div>
 
             <div>
-              <button className="bg-secondary w-full rounded-[5px] py-3 font-open-sans font-semibold text-[16px] text-white leading-[24px] tracking-[0.15px] uppercase text-center">
+              <button onClick={handleLogin} className="bg-secondary w-full rounded-[5px] py-3 font-open-sans font-semibold text-[16px] text-white leading-[24px] tracking-[0.15px] uppercase text-center">
                 Log In
               </button>
             </div>

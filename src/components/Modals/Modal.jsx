@@ -1,7 +1,8 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState } from "react";
 
-import { IoClose } from "react-icons/io5";
 import { IoMdCloseCircleOutline } from "react-icons/io";
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css'; // default styling
 
 
 
@@ -280,16 +281,17 @@ const AddCancelReasonModal = ({ isOpen, onClose, onSubmit }) => {
                     {/* Reply */}
                     <div className="mt-6">
                         <label className="block font-manrope text-[14px] font-semibold text-[#000000] mb-1">Reply</label>
-                        <textarea
-                            rows={6}
-                            className="w-full px-4 py-2 border rounded-lg"
-                            placeholder="Enter your reply here..."
-                        ></textarea>
+                        <ReactQuill
+                            value={reply}
+                            onChange={setReply}
+                            className="bg-white rounded-lg"
+                            theme="snow"
+                        />
                     </div>
                 </div>
 
                 {/* Buttons */}
-                <div className="flex justify-center gap-3 mt-4">
+                <div className="flex justify-center gap-3 mt-20">
                     <button
                         onClick={handleClear}
                         className="px-5 py-1 rounded-[4px] bg-[#EBEFF4] border border-[#E5EBF1] font-urbanist text-[14px] font-semibold text-[#64748B]"
@@ -388,12 +390,12 @@ const SummaryModal = ({ isOpen, onClose, onSubmit }) => {
                     {/* Reply */}
                     <div className="mt-6">
                         <label className="block font-manrope text-[14px] font-semibold text-[#000000] mb-1">Reply</label>
-                        <textarea
-                            rows={6}
-                            value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra condimentum eget purus in. Consectetur eget id morbi amet amet, in. Ipsum viverra pretium tellus neque. Ullamcorper suspendisse aenean leo pharetra in sit semper et. Amet quam placerat sem.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra condimentum eget purus in. Consectetur eget id morbi amet amet, in. Ipsum viverra pretium tellus neque. Ullamcorper suspendisse aenean leo pharetra in sit semper et. Amet quam placerat sem."
-                            className="w-full px-4 py-2 border rounded-lg"
-                            placeholder="Enter your reply here..."
-                        ></textarea>
+                        <ReactQuill
+                            value={reply}
+                            onChange={setReply}
+                            className="bg-white rounded-lg"
+                            theme="snow"
+                        />
                     </div>
                 </div>
             </div>
@@ -476,12 +478,12 @@ const AddBlogModal = ({ isOpen, onClose, onSubmit }) => {
                         <label htmlFor="description" className="block font-manrope text-[14px] font-semibold text-[#000000] mb-1">
                             Description
                         </label>
-                        <textarea
-                            id="description"
-                            rows={6}
-                            className="w-full px-4 py-2 border rounded-lg"
-                            placeholder="Enter your reply here..."
-                        ></textarea>
+                        <ReactQuill
+                            value={reply}
+                            onChange={setReply}
+                            className="bg-white rounded-lg"
+                            theme="snow"
+                        />
                     </div>
                 </div>
 
@@ -800,7 +802,6 @@ const AddTesmMemberModal = ({ isOpen, onClose, onSubmit }) => {
 }
 
 const AddRoleModal = ({ isOpen, onClose, onSubmit }) => {
-    const [reply, setReply] = useState("");
 
 
     if (!isOpen) return null;
@@ -976,7 +977,6 @@ const AddBannerModal = ({ isOpen, onClose, onSubmit }) => {
 
 
 const ShareNotificationModal = ({ isOpen, onClose, onSubmit }) => {
-    const [reply, setReply] = useState("");
 
 
     if (!isOpen) return null;
@@ -1062,7 +1062,6 @@ const ShareNotificationModal = ({ isOpen, onClose, onSubmit }) => {
 const AddNotificationModal = ({ isOpen, onClose, onSubmit }) => {
     const [reply, setReply] = useState("");
 
-
     if (!isOpen) return null;
 
     const handleClear = () => {
@@ -1105,11 +1104,12 @@ const AddNotificationModal = ({ isOpen, onClose, onSubmit }) => {
                     </div>
                     <div className="mt-6">
                         <label className="block font-manrope text-[14px] font-semibold text-[#000000] mb-1">Content*</label>
-                        <textarea
-                            rows={6}
-                            className="w-full px-4 py-2 border rounded-lg"
-                            placeholder="Enter your content here..."
-                        ></textarea>
+                        <ReactQuill
+                            value={reply}
+                            onChange={setReply}
+                            className="bg-white rounded-lg"
+                            theme="snow"
+                        />
                     </div>
                 </div>
 
@@ -1179,11 +1179,12 @@ const AddTicketModal = ({ isOpen, onClose, onSubmit }) => {
                     </div>
                     <div className="mt-6">
                         <label className="block font-manrope text-[14px] font-semibold text-[#000000] mb-1">Reply</label>
-                        <textarea
-                            rows={6}
-                            className="w-full px-4 py-2 border rounded-lg"
-                            placeholder="Enter your content here..."
-                        ></textarea>
+                        <ReactQuill
+                            value={reply}
+                            onChange={setReply}
+                            className="bg-white rounded-lg"
+                            theme="snow"
+                        />
                     </div>
                 </div>
 
@@ -1284,11 +1285,12 @@ const EditTicketModal = ({ isOpen, onClose, onSubmit }) => {
                     </div>
                     <div className="mt-6">
                         <label className="block font-manrope text-[14px] font-semibold text-[#000000] mb-1">Reply</label>
-                        <textarea
-                            rows={6}
-                            className="w-full px-4 py-2 border rounded-lg"
-                            placeholder="Enter your content here..."
-                        ></textarea>
+                        <ReactQuill
+                            value={reply}
+                            onChange={setReply}
+                            className="bg-white rounded-lg"
+                            theme="snow"
+                        />
                     </div>
                 </div>
 
@@ -1319,7 +1321,6 @@ const EditTicketModal = ({ isOpen, onClose, onSubmit }) => {
 }
 
 const ViewTicketModal = ({ isOpen, onClose, onSubmit }) => {
-    const [reply, setReply] = useState("");
 
 
     if (!isOpen) return null;
@@ -1440,11 +1441,12 @@ const AddFAQReplyModal = ({ isOpen, onClose, onSubmit }) => {
                     </div>
                     <div className="mt-6">
                         <label className="block font-manrope text-[14px] font-semibold text-[#000000] mb-1">Reply</label>
-                        <textarea
-                            rows={6}
-                            className="w-full px-4 py-2 border rounded-lg"
-                            placeholder="Enter your content here..."
-                        ></textarea>
+                        <ReactQuill
+                            value={reply}
+                            onChange={setReply}
+                            className="bg-white rounded-lg"
+                            theme="snow"
+                        />
                     </div>
                 </div>
 
@@ -1539,11 +1541,12 @@ const AddPageManagementModal = ({ isOpen, onClose, onSubmit }) => {
                     </div>
                     <div className="mt-6">
                         <label className="block font-manrope text-[14px] font-semibold text-[#000000] mb-1">Content</label>
-                        <textarea
-                            rows={6}
-                            className="w-full px-4 py-2 border rounded-lg"
-                            placeholder="Enter your content here..."
-                        ></textarea>
+                        <ReactQuill
+                            value={reply}
+                            onChange={setReply}
+                            className="bg-white rounded-lg"
+                            theme="snow"
+                        />
                     </div>
                 </div>
 
@@ -1561,6 +1564,37 @@ const AddPageManagementModal = ({ isOpen, onClose, onSubmit }) => {
                     >
                         Save
                     </button>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+const ReviewModal = ({ isOpen, onClose, onSubmit }) => {
+    const [reason, setReason] = useState("condimentum eget purus in. Consectetur eget id morbi amet amet, in. Ipsum viverra pretium tellus neque. Ullamcorper suspendisse aenean leo pharetra in sit semper et. Amet quam placerat sem.");
+
+    if (!isOpen) return null;
+
+    return (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80">
+            <div className="bg-white rounded-xl w-full max-w-lg p-6 relative shadow-lg">
+                {/* Close Button */}
+
+                <div className="flex items-center justify-between mb-3">
+                    <h2 className="font-manrope text-[16px] font-bold text-[#000000]">Review</h2>
+                    <IoMdCloseCircleOutline color="#C12D34" size={25} className="cursor-pointer" onClick={onClose} />
+                </div>
+
+                {/* Input */}
+                <div className="mb-4">
+                    <textarea
+                        type="text"
+                        value={reason}
+                        onChange={(e) => setReason(e.target.value)}
+                        rows={4}
+                        readOnly
+                        className="w-full px-4 py-2 border rounded-lg"
+                    />
                 </div>
             </div>
         </div>
@@ -1591,5 +1625,6 @@ export {
     EditTicketModal,
     ViewTicketModal,
     AddFAQReplyModal,
-    AddPageManagementModal
+    AddPageManagementModal,
+    ReviewModal
 }

@@ -70,12 +70,12 @@ const PageManagement = () => {
                 onClose={() => setShowModal(false)}
             />
 
-            <div className="mt-5">
+            <div className="sm:mt-5 mt-2">
                 <div className='overflow-x-auto min-h-screen'>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6 pb-2">
                         {cardData.map((card) => {
                             return (
-                                <div key={card.id} className="bg-white rounded-[8px] p-2.5 overflow-hidden shadow-sm">
+                                <div key={card.id} className="bg-white rounded-[8px] p-2.5 overflow-hidden shadow-sm hover:bg-[#E1F7FF]">
                                     <div className="flex justify-between items-center mb-2">
                                         <h6 className='font-urbanist font-[600] text-[18px] text-[#0A0E15] leading-[28px]'>{card.title}</h6>
                                         <div className='flex items-center gap-2'>

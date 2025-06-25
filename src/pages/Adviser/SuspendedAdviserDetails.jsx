@@ -146,7 +146,7 @@ const SuspendedAdviserDetails = () => {
 
     return (
         <DashbaordLayout title="Adviser Details"
-            hedartitle="Adviser Profile"
+             hedartitle={`Suspended List ${'>'} Adviser Profile`}
             titleAction={
                 <IoArrowBack size={25} color='#1C1B1F' className='cursor-pointer' onClick={() => navigate('/adviser/list')} />
             }

@@ -76,10 +76,10 @@ const Blog = () => {
                 onClose={() => setShowModal(false)}
             />
 
-            <div className="mt-5">
-                <div className='flex items-center justify-between mb-4'>
-                    <div className='flex items-center gap-2'>
-                        <div className='bg-white py-2 px-5 flex items-center justify-between rounded-[8px]'>
+            <div className="sm:mt-5 mt-2">
+                <div className='flex items-center justify-between mb-4 flex-wrap gap-2'>
+                    <div className='flex items-center gap-2 flex-wrap'>
+                        <div className='bg-white py-2 px-5 flex items-center justify-between rounded-[8px] w-full sm:w-min'>
                             <input
                                 type="text"
                                 placeholder='Search....'
@@ -95,7 +95,7 @@ const Blog = () => {
                 <div className='overflow-x-auto min-h-screen'>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 pb-2">
                         {cardData.map((card) => (
-                            <div key={card.id} className="bg-white rounded-[8px] p-2.5 overflow-hidden shadow-sm">
+                            <div key={card.id} className="bg-white rounded-[8px] p-2.5 overflow-hidden shadow-sm hover:bg-[#E1F7FF]">
                                 <img src={card.image} alt={card.title} className="w-full h-[250px] rounded-tr-[16px] rounded-tl-[16px] object-cover" />
 
                                 <div className="pt-2">
